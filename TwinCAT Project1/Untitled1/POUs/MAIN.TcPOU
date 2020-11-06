@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="MAIN" Id="{d89af4a1-5c9c-4631-9fc2-66e77163c97b}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	
+fb_solvexy:FB_SOLVEXY;
+
+END_VAR
+
+
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[GVL.blink := NOT(GVL.blink);
+
+fb_solvexy.x:=GVL.Xc;
+fb_solvexy.y:=GVL.Yc;
+fb_solvexy();
+GVL.alfa:=fb_solvexy.alfa;
+GVL.beta:=fb_solvexy.beta;]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="25" Count="1" />
+      <LineId Id="28" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

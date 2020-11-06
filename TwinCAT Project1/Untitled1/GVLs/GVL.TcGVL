@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <GVL Name="GVL" Id="{bebee469-33ab-4dc5-83a7-e8c6445d8067}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	
+blink : BOOL := 1;
+
+
+// Geometría del robot//
+//todo en mm//
+
+Pi : REAL := 3.1416;
+
+d : REAL := 200;
+l1 : REAL := 1000; //longitud brazo proximal
+l2 : REAL := 1000; //longitud brazo distal
+
+Xc : REAL:= 0; //posición x del spray
+Yc : REAL:= 0; //posición y del spray
+
+alfa : REAL:= Pi; //ángulo del brazo pxosimal izquierdo
+beta : REAL:= 0; //ángulo del brazo pxosimal derecho
+
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
