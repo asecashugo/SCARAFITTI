@@ -5,7 +5,7 @@
 VAR
 	
 fb_solvexy:FB_SOLVEXY;
-	error AT %Q*: BOOL;
+
 
 END_VAR
 
@@ -20,7 +20,7 @@ fb_solvexy.y:=GVL.Yc;
 fb_solvexy();
 GVL.d1 :=fb_solvexy.d1;
 GVL.d2 :=fb_solvexy.d2;
-error := fb_solvexy.error;
+GVL.error := fb_solvexy.error;
 GVL.alfa1:=180/GVL.Pi*fb_solvexy.alfa1;
 GVL.beta1:=180/GVL.Pi*fb_solvexy.beta1;
 GVL.alfa2:=180/GVL.Pi*fb_solvexy.alfa2;

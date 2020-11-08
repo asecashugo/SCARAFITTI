@@ -4,7 +4,7 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	
-blink : BOOL := 1;
+blink AT %Q* : BOOL := 1;
 
 
 // Geometría del robot//
