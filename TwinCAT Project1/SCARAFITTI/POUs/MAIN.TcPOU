@@ -5,6 +5,7 @@
 VAR
 	
 fb_solvexy:FB_SOLVEXY;
+	error AT %Q*: BOOL;
 
 END_VAR
 
@@ -17,15 +18,30 @@ END_VAR
 fb_solvexy.x:=GVL.Xc;
 fb_solvexy.y:=GVL.Yc;
 fb_solvexy();
-GVL.alfa:=fb_solvexy.alfa;
-GVL.beta:=fb_solvexy.beta;]]></ST>
+GVL.d1 :=fb_solvexy.d1;
+GVL.d2 :=fb_solvexy.d2;
+error := fb_solvexy.error;
+GVL.alfa1:=180/GVL.Pi*fb_solvexy.alfa1;
+GVL.beta1:=180/GVL.Pi*fb_solvexy.beta1;
+GVL.alfa2:=180/GVL.Pi*fb_solvexy.alfa2;
+GVL.beta2:=180/GVL.Pi*fb_solvexy.beta2;
+GVL.alfa:=180/GVL.Pi*fb_solvexy.alfa;
+GVL.beta:=180/GVL.Pi*fb_solvexy.beta;]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="2" Count="0" />
       <LineId Id="15" Count="0" />
       <LineId Id="14" Count="0" />
       <LineId Id="22" Count="0" />
-      <LineId Id="25" Count="1" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="26" Count="0" />
       <LineId Id="28" Count="0" />
     </LineIds>
   </POU>

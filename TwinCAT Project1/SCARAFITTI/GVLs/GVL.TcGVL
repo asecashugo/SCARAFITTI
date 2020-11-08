@@ -14,14 +14,23 @@ Pi : REAL := 3.1416;
 
 d : REAL := 200;
 l1 : REAL := 1000; //longitud brazo proximal
-l2 : REAL := 1000; //longitud brazo distal
+l2 : REAL := 1200; //longitud brazo distal
 
 Xc : REAL:= 0; //posición x del spray
 Yc : REAL:= 0; //posición y del spray
 
-alfa : REAL:= Pi; //ángulo del brazo pxosimal izquierdo
+alfa : REAL:= 0; //ángulo del brazo pxosimal izquierdo
 beta : REAL:= 0; //ángulo del brazo pxosimal derecho
 
+alfa1 : REAL:= 0; //ángulo del brazo pxosimal izquierdo
+beta1 : REAL:= 0; //ángulo del brazo pxosimal derecho
+alfa2 : REAL:= 0; //ángulo del brazo pxosimal izquierdo
+beta2 : REAL:= 0; //ángulo del brazo pxosimal derecho
+
+
+	d1: REAL;
+	error AT %Q*: BOOL;
+	d2: REAL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

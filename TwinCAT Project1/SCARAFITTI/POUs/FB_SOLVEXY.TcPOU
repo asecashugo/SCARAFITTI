@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="FB_SOLVEXY" Id="{fa1b62a0-c717-4454-9065-b5fc8a73063a}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SOLVEXY
+VAR_INPUT
+x : REAL;
+y : REAL;
+END_VAR
+VAR_OUTPUT
+alfa : REAL;
+beta : REAL;
+d1 : REAL;
+d2 : REAL;
+alfa1 : REAL;
+alfa2 : REAL;
+beta1 : REAL;
+beta2 : REAL;
+error: BOOL := 0;
+
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[error:=FALSE;
+d1 := SQRT(y*y+(x+GVL.d)*(x+GVL.d));
+IF d1>(GVL.l1*GVL.l1+GVL.l2*GVL.l2) THEN
+	error:=TRUE;
+END_IF
+d2 := SQRT(y*y+(x-GVL.d)*(x-GVL.d));
+IF d2>(GVL.l1*GVL.l1+GVL.l2*GVL.l2) THEN
+	error:=TRUE;
+END_IF
+
+alfa1 := ATAN (y/(x+GVL.d));
+IF alfa1 < 0 THEN
+	error:=TRUE;
+END_IF
+beta1 := GVL.Pi	+ ATAN (y/(x-GVL.d));
+IF beta1 < 0 THEN
+	error:=TRUE;
+END_IF
+
+IF (ABS((GVL.l1*GVL.l1+d1*d1-GVL.l2*GVL.l2)/(2*GVL.l1*d1))>1) THEN
+error := TRUE;
+END_IF
+
+IF (ABS((GVL.l1*GVL.l1+d2*d2-GVL.l2*GVL.l2)/(2*GVL.l1*d2))>1) THEN
+error := TRUE;
+END_IF
+
+IF error=FALSE THEN
+	alfa2 := ABS(ACOS((GVL.l1*GVL.l1+d1*d1-GVL.l2*GVL.l2)/(2*GVL.l1*d1)));
+	beta2 := ABS(ACOS((GVL.l1*GVL.l1+d2*d2-GVL.l2*GVL.l2)/(2*GVL.l1*d2)));
+alfa := alfa1 + alfa2;
+beta := beta1 - beta2;
+
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="FB_SOLVEXY">
+      <LineId Id="92" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="46" Count="2" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="50" Count="1" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="53" Count="1" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="56" Count="1" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="63" Count="3" />
+      <LineId Id="68" Count="2" />
+      <LineId Id="67" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="61" Count="1" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="72" Count="0" />
+      <LineId Id="71" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
