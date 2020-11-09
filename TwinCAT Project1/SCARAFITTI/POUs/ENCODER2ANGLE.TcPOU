@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="ENCODER2ANGLE" Id="{8f1b6799-8175-42cd-a06b-61058091be48}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK ENCODER2ANGLE
+VAR_INPUT
+	enc_a : BOOL;
+	enc_b : BOOL;
+END_VAR
+VAR_OUTPUT
+	enc_pulsecount : DINT;
+	enc_angle : REAL;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <LineIds Name="ENCODER2ANGLE">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

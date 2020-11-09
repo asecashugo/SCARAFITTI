@@ -4,7 +4,8 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	
-fb_solvexy:FB_SOLVEXY;
+fb_solveAlfaBeta:FB_SOLVEALFABETA;
+fb_solveABDE:FB_SOLVEABDE;
 
 
 END_VAR
@@ -13,36 +14,42 @@ END_VAR
 
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[GVL.blink := NOT(GVL.blink);
+      <ST><![CDATA[//Blink
+GVL.blink := NOT(GVL.blink);
 
-fb_solvexy.x:=GVL.Xc;
-fb_solvexy.y:=GVL.Yc;
-fb_solvexy();
-GVL.d1 :=fb_solvexy.d1;
-GVL.d2 :=fb_solvexy.d2;
-GVL.error := fb_solvexy.error;
-GVL.alfa1:=180/GVL.Pi*fb_solvexy.alfa1;
-GVL.beta1:=180/GVL.Pi*fb_solvexy.beta1;
-GVL.alfa2:=180/GVL.Pi*fb_solvexy.alfa2;
-GVL.beta2:=180/GVL.Pi*fb_solvexy.beta2;
-GVL.alfa:=180/GVL.Pi*fb_solvexy.alfa;
-GVL.beta:=180/GVL.Pi*fb_solvexy.beta;]]></ST>
+//SolveAlfaBeta
+fb_solveAlfaBeta.x:=GVL.Xc;
+fb_solveAlfaBeta.y:=GVL.Yc;
+fb_solveAlfaBeta();
+GVL.d1 :=fb_solveAlfaBeta.d1;
+GVL.d2 :=fb_solveAlfaBeta.d2;
+GVL.error := fb_solveAlfaBeta.error;
+GVL.alfa1:=180/GVL.Pi*fb_solveAlfaBeta.alfa1;
+GVL.beta1:=180/GVL.Pi*fb_solveAlfaBeta.beta1;
+GVL.alfa2:=180/GVL.Pi*fb_solveAlfaBeta.alfa2;
+GVL.beta2:=180/GVL.Pi*fb_solveAlfaBeta.beta2;
+GVL.alfa:=180/GVL.Pi*fb_solveAlfaBeta.alfa;
+GVL.beta:=180/GVL.Pi*fb_solveAlfaBeta.beta;
+
+//SolveABDE
+fb_solveABDE.alfa:=GVL.alfa*GVL.Pi/180;
+fb_solveABDE.beta:=GVL.beta*GVL.Pi/180;
+fb_solveABDE();
+GVL.Xa:=fb_solveABDE.Xa;
+GVL.Ya:=fb_solveABDE.Ya;
+GVL.Xb:=fb_solveABDE.Xb;
+GVL.Yb:=fb_solveABDE.Yb;
+GVL.Xd:=fb_solveABDE.Xd;
+GVL.Yd:=fb_solveABDE.Yd;
+GVL.Xe:=fb_solveABDE.Xe;
+GVL.Ye:=fb_solveABDE.Ye;]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="2" Count="0" />
-      <LineId Id="15" Count="0" />
-      <LineId Id="14" Count="0" />
-      <LineId Id="22" Count="0" />
-      <LineId Id="25" Count="0" />
-      <LineId Id="38" Count="0" />
-      <LineId Id="45" Count="0" />
-      <LineId Id="40" Count="0" />
-      <LineId Id="42" Count="0" />
-      <LineId Id="41" Count="0" />
-      <LineId Id="44" Count="0" />
-      <LineId Id="43" Count="0" />
-      <LineId Id="26" Count="0" />
+      <LineId Id="82" Count="14" />
       <LineId Id="28" Count="0" />
+      <LineId Id="98" Count="0" />
+      <LineId Id="97" Count="0" />
+      <LineId Id="99" Count="10" />
     </LineIds>
   </POU>
 </TcPlcObject>

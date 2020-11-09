@@ -16,8 +16,16 @@ d : REAL := 200;
 l1 : REAL := 1000; //longitud brazo proximal
 l2 : REAL := 1200; //longitud brazo distal
 
+Xa : REAL:= 0; 
+Ya : REAL:= 0; 
+Xb : REAL:= 0; 
+Yb : REAL:= 0; 
 Xc : REAL:= 0; //posición x del spray
 Yc : REAL:= 0; //posición y del spray
+Xd : REAL:= 0; 
+Yd : REAL:= 0; 
+Xe : REAL:= 0; 
+Ye : REAL:= 0; 
 
 alfa : REAL:= 0; //ángulo del brazo pxosimal izquierdo
 beta : REAL:= 0; //ángulo del brazo pxosimal derecho
@@ -31,6 +39,18 @@ beta2 : REAL:= 0; //ángulo del brazo pxosimal derecho
 	d1: REAL;
 	error AT %Q*: BOOL;
 	d2: REAL;
+
+// Inputs
+
+DI_enc1_a AT %I*: BOOL;
+DI_enc1_b AT %I*: BOOL;
+DI_enc2_a AT %I*: BOOL;
+DI_enc2_b AT %I*: BOOL;
+
+alfa_enc : REAL :=0;
+beta_enc : REAL :=0;
+
+
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
