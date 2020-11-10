@@ -12,7 +12,7 @@ blink AT %Q* : BOOL := 1;
 
 Pi : REAL := 3.1416;
 
-d : REAL := 200;
+d : REAL := 400;
 l1 : REAL := 1000; //longitud brazo proximal
 l2 : REAL := 1200; //longitud brazo distal
 

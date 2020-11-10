@@ -33,18 +33,24 @@ IF d2>(GVL.l1*GVL.l1+GVL.l2*GVL.l2) THEN
 END_IF
 
 IF (x+GVL.d=0) THEN
-	alfa1:=0;
-	ELSE
-		alfa1 := ATAN (y/(x+GVL.d));
+	alfa1:=GVL.Pi/2;
+	ELSE IF x+GVL.d<0 THEN		
+		alfa1 := gvl.pi + ATAN (y/(x+GVL.d));
+		ELSE
+			alfa1 := ATAN (y/(x+GVL.d));
+		END_IF
 	END_IF
 IF alfa1 < 0 THEN
 	error:=TRUE;
 END_IF
 
 IF (x-GVL.d=0) THEN
-	beta1:=0;
+	beta1:=GVL.Pi/2;
+	ELSE IF x-GVL.d>0 THEN
+		beta1 := ATAN (y/(x-GVL.d));
 	ELSE
 		beta1 := GVL.Pi	+ ATAN (y/(x-GVL.d));
+	END_IF
 	END_IF
 
 IF beta1 < 0 THEN
@@ -89,13 +95,17 @@ beta := beta1 - beta2;
       <LineId Id="124" Count="0" />
       <LineId Id="40" Count="0" />
       <LineId Id="125" Count="0" />
-      <LineId Id="127" Count="2" />
+      <LineId Id="127" Count="1" />
+      <LineId Id="162" Count="2" />
+      <LineId Id="129" Count="0" />
       <LineId Id="53" Count="1" />
       <LineId Id="52" Count="0" />
       <LineId Id="131" Count="0" />
       <LineId Id="130" Count="0" />
       <LineId Id="132" Count="0" />
+      <LineId Id="165" Count="1" />
       <LineId Id="134" Count="2" />
+      <LineId Id="167" Count="0" />
       <LineId Id="133" Count="0" />
       <LineId Id="56" Count="1" />
       <LineId Id="55" Count="0" />
