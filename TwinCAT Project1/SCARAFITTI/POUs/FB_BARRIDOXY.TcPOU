@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="FB_BARRIDOXY" Id="{d35cf1a9-8eea-43ee-87cc-45ae10fa1aa6}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_BARRIDOXY
+VAR_INPUT
+	speed : REAL;
+END_VAR
+VAR_OUTPUT
+	Xbarrido: REAL := 0;
+	Ybarrido : REAL :=1000;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF Xbarrido < 500 THEN
+	Xbarrido:=Xbarrido+speed;
+	ELSE
+		Xbarrido := -500;
+		Ybarrido:=Ybarrido+speed;
+	END_IF
+	
+IF Ybarrido > 2000 THEN
+	Ybarrido := 1000;
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_BARRIDOXY">
+      <LineId Id="9" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="15" Count="1" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="29" Count="3" />
+      <LineId Id="14" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

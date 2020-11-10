@@ -16,6 +16,8 @@ d : REAL := 200;
 l1 : REAL := 1000; //longitud brazo proximal
 l2 : REAL := 1200; //longitud brazo distal
 
+//Vértices robot
+
 Xa : REAL:= 0; 
 Ya : REAL:= 0; 
 Xb : REAL:= 0; 
@@ -26,6 +28,27 @@ Xd : REAL:= 0;
 Yd : REAL:= 0; 
 Xe : REAL:= 0; 
 Ye : REAL:= 0; 
+
+//Mitad de cada brazo
+
+Xab : REAL:= 0; 
+Yab : REAL:= 0; 
+Xbc : REAL:= 0; 
+Ybc : REAL:= 0; 
+Xcd : REAL:= 0; 
+Ycd : REAL:= 0; 
+Xde : REAL:= 0; 
+Yde : REAL:= 0;
+
+//Arrays de brazos?
+
+AB : ARRAY [1..2,1..2] OF REAL;
+BC : ARRAY [1..2,1..2] OF REAL;
+CD : ARRAY [1..2,1..2] OF REAL;
+DE : ARRAY [1..2,1..2] OF REAL;
+
+
+//Ángulos
 
 alfa : REAL:= 0; //ángulo del brazo pxosimal izquierdo
 beta : REAL:= 0; //ángulo del brazo pxosimal derecho

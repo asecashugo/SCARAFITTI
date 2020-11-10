@@ -27,6 +27,9 @@
     <Compile Include="POUs\ENCODER2ANGLE.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\FB_BARRIDOXY.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\FB_SOLVEABDE.TcPOU">
       <SubType>Code</SubType>
     </Compile>

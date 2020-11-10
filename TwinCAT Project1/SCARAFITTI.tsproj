@@ -8,7 +8,7 @@
 	<Project ProjectGUID="{A848BE11-9DBC-4834-8F33-B264C2CC1581}" TargetNetId="5.72.137.238.1.1" ShowHideConfigurations="#x106">
 		<System>
 			<Tasks>
-				<Task Id="3" Priority="20" CycleTime="1000000" AmsPort="350" AdtTasks="true">
+				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
 					<Name>PlcTask</Name>
 				</Task>
 			</Tasks>
@@ -57,7 +57,7 @@
 								<OTCID>#x02010030</OTCID>
 							</ManualConfig>
 							<Priority>20</Priority>
-							<CycleTime>100000000</CycleTime>
+							<CycleTime>10000000</CycleTime>
 						</Context>
 					</Contexts>
 					<TaskPouOids>

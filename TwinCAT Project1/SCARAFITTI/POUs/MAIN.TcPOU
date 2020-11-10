@@ -6,6 +6,7 @@ VAR
 	
 fb_solveAlfaBeta:FB_SOLVEALFABETA;
 fb_solveABDE:FB_SOLVEABDE;
+fb_barridoXY:FB_BARRIDOXY;
 
 
 END_VAR
@@ -16,6 +17,12 @@ END_VAR
     <Implementation>
       <ST><![CDATA[//Blink
 GVL.blink := NOT(GVL.blink);
+
+//Barrido
+fb_barridoXY.speed:=2;
+fb_barridoXY();
+GVL.Xc:=fb_barridoXY.Xbarrido;
+GVL.Yc:=fb_barridoXY.Ybarrido;
 
 //SolveAlfaBeta
 fb_solveAlfaBeta.x:=GVL.Xc;
@@ -42,14 +49,37 @@ GVL.Yb:=fb_solveABDE.Yb;
 GVL.Xd:=fb_solveABDE.Xd;
 GVL.Yd:=fb_solveABDE.Yd;
 GVL.Xe:=fb_solveABDE.Xe;
-GVL.Ye:=fb_solveABDE.Ye;]]></ST>
+GVL.Ye:=fb_solveABDE.Ye;
+
+//Brazos
+GVL.Xab:=(GVL.Xa+GVL.Xb)/2;
+GVL.Yab:=(GVL.Ya+GVL.Yb)/2;
+GVL.Xbc:=(GVL.Xc+GVL.Xb)/2;
+GVL.Ybc:=(GVL.Yc+GVL.Yb)/2;
+GVL.Xcd:=(GVL.Xc+GVL.Xd)/2;
+GVL.Ycd:=(GVL.Yc+GVL.Yd)/2;
+GVL.Xde:=(GVL.Xd+GVL.Xe)/2;
+GVL.Yde:=(GVL.Yd+GVL.Ye)/2;]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="82" Count="14" />
+      <LineId Id="82" Count="1" />
+      <LineId Id="143" Count="0" />
+      <LineId Id="142" Count="0" />
+      <LineId Id="147" Count="0" />
+      <LineId Id="144" Count="0" />
+      <LineId Id="146" Count="0" />
+      <LineId Id="148" Count="0" />
+      <LineId Id="84" Count="12" />
       <LineId Id="28" Count="0" />
       <LineId Id="98" Count="0" />
       <LineId Id="97" Count="0" />
       <LineId Id="99" Count="10" />
+      <LineId Id="111" Count="0" />
+      <LineId Id="110" Count="0" />
+      <LineId Id="119" Count="0" />
+      <LineId Id="124" Count="4" />
+      <LineId Id="130" Count="0" />
+      <LineId Id="129" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
