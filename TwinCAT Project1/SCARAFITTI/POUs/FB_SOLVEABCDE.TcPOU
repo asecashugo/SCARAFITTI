@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="FB_SOLVEABCDE" Id="{1478d989-93c2-4a9b-9880-0970096e4db9}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SOLVEABCDE
+VAR_INPUT
+	alfa : REAL:= 0; //ángulo del brazo pxosimal izquierdo
+	beta : REAL:= 0; //ángulo del brazo pxosimal derecho
+END_VAR
+VAR_OUTPUT
+	
+	Xa : REAL:= 0; 
+	Ya : REAL:= 0; 
+	Xb : REAL:= 0; 
+	Yb : REAL:= 0; 
+	Xc : REAL:= 0; 
+	Yc : REAL:= 0;
+	Xd : REAL:= 0; 
+	Yd : REAL:= 0; 
+	Xe : REAL:= 0; 
+	Ye : REAL:= 0; 
+	error : BOOL :=0;
+	check_AB : REAL:=GVL.l1;
+	check_BC : REAL:=GVL.l2;
+	check_CD : REAL:=GVL.l2;
+	check_DE : REAL:=GVL.l1;
+	
+
+END_VAR
+VAR
+	aux : REAL;
+	A : REAL;
+	B : REAL;
+	C : REAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[error:=FALSE;
+
+// A
+Xa := -GVL.d ;
+Ya := 0 ;
+
+//B
+Xb := Xa + GVL.l1*COS(alfa);
+Yb := GVL.l1*SIN(alfa);
+
+//E
+Xe := GVL.d ;
+Ye := 0 ;
+
+//D
+Xd := Xe + GVL.l1*COS(beta);
+Yd := GVL.l1*SIN(beta);
+
+//Chekcs
+IF SQRT((Xd-Xb)*(Xd-Xb)+(Yd-Yb)*(Yd-Yb))>2*GVL.l2 THEN //B y D demaisado separados
+	error:=TRUE;
+	ELSE IF Xb>=Xd THEN //brazos proximales cruzados
+		error:=TRUE;
+		ELSE //calculate Xc
+			aux:=(Yd-Yb)/(Xb-Xd);
+			A:=1+ aux*aux ;
+			B:=-2*(aux*Xb+Yb);
+			C:=Yb*Yb-GVL.l2*GVL.l2;
+			Yc := (-B+SQRT(B*B-4*A*C))/(2*A);
+			Xc := aux*Yc;
+		END_IF
+		
+check_AB:=SQRT((Xb-Xa)*(Xb-Xa)+(Yb-Ya)*(Yb-Ya));
+check_BC:=SQRT((Xb-Xc)*(Xb-Xc)+(Yb-Yc)*(Yb-Yc));
+check_CD:=SQRT((Xd-Xc)*(Xd-Xc)+(Yd-Yc)*(Yd-Yc));
+check_DE:=SQRT((Xd-Xe)*(Xd-Xe)+(Yd-Ye)*(Yd-Ye));
+		
+	END_IF
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_SOLVEABCDE">
+      <LineId Id="103" Count="1" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="24" Count="1" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="37" Count="1" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="82" Count="0" />
+      <LineId Id="84" Count="1" />
+      <LineId Id="87" Count="0" />
+      <LineId Id="90" Count="2" />
+      <LineId Id="98" Count="4" />
+      <LineId Id="93" Count="0" />
+      <LineId Id="106" Count="1" />
+      <LineId Id="113" Count="2" />
+      <LineId Id="88" Count="1" />
+      <LineId Id="86" Count="0" />
+      <LineId Id="35" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

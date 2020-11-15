@@ -7,6 +7,9 @@
     <PouCall>
       <Name>MAIN</Name>
     </PouCall>
+    <PouCall>
+      <Name>SERIALCOMM</Name>
+    </PouCall>
     <TaskFBGuid>{f48bd9da-1698-4d6a-86f6-f42ba01d8c7c}</TaskFBGuid>
     <Fb_init>{6aaee052-3afe-4d14-899b-2dd30c120b2b}</Fb_init>
     <Fb_exit>{0ac8190a-a5e9-4f29-8745-de653dc14d6b}</Fb_exit>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="ENCODERtoANGLE" Id="{0b3edcd1-9b78-46ac-a2a6-6cfa1826f812}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION ENCODERtoANGLE : REAL
+VAR_INPUT
+	encoder_in : UDINT;
+	
+END_VAR
+VAR
+	Pulsos : UDINT :=600;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[///Medir ángulos
+ENCODERtoANGLE:= 2*GVL.Pi - (encoder_in MOD Pulsos)*2*GVL.Pi/Pulsos;]]></ST>
+    </Implementation>
+    <LineIds Name="ENCODERtoANGLE">
+      <LineId Id="14" Count="0" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

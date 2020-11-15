@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="FB_ErrHist" Id="{1e5cad1f-e085-4ea4-85ac-324b75301f54}" SpecialFunc="None">
+    <Declaration><![CDATA[(* v1.9
+build up an error history consisting of two arrays and one index.
+The index shows the actual array position. The last error id and the count for this id are saved in the arrays.
+If an error id is the same as the previous input error the counter is increased. Otherwise the index is increased. *)
+FUNCTION_BLOCK FB_ErrHist
+VAR_INPUT
+	bEdgeDetect	: BOOL;	(* FALSE: every input(bErr) is processed; TRUE: only rising edge of input is processed *)
+END_VAR
+VAR_OUTPUT
+	nErrSum		: UINT;
+	nErrIdx		: UINT; // error list index of last occured error (max. cHistLen)
+	aErrList	: ARRAY[1..cHistLen] OF ST_ErrHist;
+END_VAR
+
+VAR
+	bNewErr		: BOOL;
+	fbErrTrig	: R_TRIG;
+END_VAR
+VAR CONSTANT
+	cHistLen	: UINT := 100;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="AddError" Id="{aba748e3-9a67-4bb5-8eb8-40995d2799b3}">
+      <Declaration><![CDATA[METHOD AddError
+VAR_INPUT
+	bErr		: BOOL;
+	nErrId		: UDINT;
+	sErrSource	: STRING(63);
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fbErrTrig(CLK:=bErr);
+IF bEdgeDetect THEN
+	bNewErr := fbErrTrig.Q;
+ELSE
+	bNewErr := bErr;
+END_IF
+
+IF bNewErr THEN
+	nErrSum := nErrSum + 1;
+	IF nErrIdx < cHistLen THEN
+		IF nErrIdx = 0 THEN
+			nErrIdx	:= nErrIdx + 1;
+		ELSIF aErrList[nErrIdx].nErrId <> nErrId OR aErrList[nErrIdx].sErrSource <> sErrSource THEN
+			nErrIdx	:= nErrIdx + 1;
+		END_IF
+		aErrList[nErrIdx].nErrId := nErrId;
+		aErrList[nErrIdx].sErrSource := sErrSource;
+		aErrList[nErrIdx].nErrCount := aErrList[nErrIdx].nErrCount + 1;
+	END_IF
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reset" Id="{08050c8b-d988-48a0-8a1e-836ae728e505}">
+      <Declaration><![CDATA[METHOD Reset
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[nErrSum := 0;
+nErrIdx := 0;
+MEMSET(ADR(aErrList),0,SIZEOF(aErrList));]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_ErrHist">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_ErrHist.AddError">
+      <LineId Id="3" Count="19" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_ErrHist.Reset">
+      <LineId Id="3" Count="1" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <TcLicenseInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2011/11/TcLicenseInfo">
 	<LicenseInfo>
-		<SystemId>{1DDFD149-F718-71E9-5B45-1E642280851B}</SystemId>
-		<IssueTime>2020-11-07T21:51:00</IssueTime>
-		<ExpireTime>2020-11-15T00:00:00</ExpireTime>
-		<LicenseKey>c2ef072d9fb10acbbf79b9f46c876b11a7870c7ba621cae2d26cc8d987022d71a590565fd14be05bc199e988f4e03a12a16c292ddb60a9f00caaab6c4208b9e77e3b7686dcb59182a57d64ceaa9a14de7f78ab4f6105098aedcc3c6fe15f1e47761e1c4d92afb5fbeb537a63fd342a0007d82553e7230bb9885a00e2fc05df77ea5e0afa26ad91bb31cba6831237c42a990b23e61b6738ff77b1ae65df6e8c78562723f639193b32d6c374d2bdea4dec6895dd63f5c64966cd760ade42cfb6cf8d87b9996b39b5c9d3e41c27b1bd3c59954e3f729d21b9f733034827a12c4a8b8a7c21edd72232e321dd92cc1fc524849e8355be353cbeeabb7da4a2dc723213</LicenseKey>
+		<SystemId>{D4E1F282-3567-1998-C584-3DAF234205B4}</SystemId>
+		<IssueTime>2020-11-13T22:15:00</IssueTime>
+		<ExpireTime>2020-11-21T00:00:00</ExpireTime>
+		<LicenseKey>095068a1394454c76b140446ba3588c58a7ff6e3edc444e4b8bd4a9ffae9b5e75b6abdde6ccaa61e43e3a4dbb171457a54d92bc45adf0bc6466fe39c2c8a8e2a11c16fe624d0bcc629a1843de8af01bc71a85a9e6164ab2019a6ba2b08b586982d36389bd9a10a0d5339e2e88e3388e6931dd706174deec3fa98847c5be0d5e8f8ddb0e1f7f1261037d8c50ab3f90a98f9b12bdf683a5a211a4c6a404bf2d97f2ec369ef980288cd669da676a3bb92c7ee84b17bc9efcbf2bf0c31f0e18e215acd94d38724486e1ba0668a9cba01eced3eca6f6ed808389d465e3f3a4fd88d8c557d1236a54f49cdf5bebcab455ccac99b51017d5c76c0838464b573f986c1fb</LicenseKey>
 		<License>
 			<LicenseId>{4C256767-E6E6-4AF5-BD68-9F7ABAD0C200}</LicenseId>
 			<Name>TC3 ADS</Name>
@@ -19,6 +19,16 @@
 			<LicenseId>{66689887-CCBD-452C-AC9A-039D997C6E66}</LicenseId>
 			<Name>TC3 PLC</Name>
 			<OrderNo>TC1200</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{92583661-35AE-45CE-BD4F-C35BFE16F07E}</LicenseId>
+			<Name>TC3 Database-Server</Name>
+			<OrderNo>TF6420</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{BCA6EE0A-9CE1-4D3F-98CA-413ABC0D94FD}</LicenseId>
+			<Name>TC3 Serial-Communication</Name>
+			<OrderNo>TF6340</OrderNo>
 		</License>
 	</LicenseInfo>
 </TcLicenseInfo>

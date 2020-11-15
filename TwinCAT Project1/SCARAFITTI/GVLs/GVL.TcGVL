@@ -23,7 +23,9 @@ Ya : REAL:= 0;
 Xb : REAL:= 0; 
 Yb : REAL:= 0; 
 Xc : REAL:= 0; //posición x del spray
+Xc_sp : REAL:= 0; //setpoint posición x del spray
 Yc : REAL:= 0; //posición y del spray
+Yc_sp : REAL:= 0; //setpoint posición y del spray
 Xd : REAL:= 0; 
 Yd : REAL:= 0; 
 Xe : REAL:= 0; 
@@ -51,7 +53,9 @@ DE : ARRAY [1..2,1..2] OF REAL;
 //Ángulos
 
 alfa : REAL:= 0; //ángulo del brazo pxosimal izquierdo
+alfa_sp : REAL:= 0; //setpoint ángulo del brazo pxosimal izquierdo
 beta : REAL:= 0; //ángulo del brazo pxosimal derecho
+beta_sp: REAL:= 0; //setpoint ángulo del brazo pxosimal derecho
 
 alfa1 : REAL:= 0; //ángulo del brazo pxosimal izquierdo
 beta1 : REAL:= 0; //ángulo del brazo pxosimal derecho
@@ -73,7 +77,10 @@ DI_enc2_b AT %I*: BOOL;
 alfa_enc : REAL :=0;
 beta_enc : REAL :=0;
 
-
+//Encoder
+Pulsos :UDINT := 600;
+TotalAlfa AT %I*: UDINT :=0;
+TotalBeta AT %I*: UDINT:=0;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
