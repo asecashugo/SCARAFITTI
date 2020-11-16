@@ -37,16 +37,10 @@
     <Compile Include="FastTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\ENCODER2ANGLE.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\EncoderMeas.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\FB_BARRIDOXY.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FB_ErrHist.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\FB_SOLVEABCDE.TcPOU">
@@ -58,13 +52,13 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\ENCODERtoANGLE.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\ENCODERPULSEtoANGLE.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\SERIALCOMM.TcPOU">
+    <Compile Include="POUs\Serial\FB_ErrHist.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Serial\SERIALCOMM.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Visualization Manager.TcVMO">
@@ -74,6 +68,7 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="POUs\Serial" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

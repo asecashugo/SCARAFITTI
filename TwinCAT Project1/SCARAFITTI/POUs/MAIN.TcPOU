@@ -27,7 +27,7 @@ END_VAR
       <ST><![CDATA[//Blink
 IO.blink := NOT(IO.blink);
 
-
+//DÓNDE ESTOY?
 ///Resolver geometría
 ////SolveABCDE
 fb_solveABCDE.alfa:=GVL.alfa;
@@ -43,8 +43,6 @@ GVL.Xd:=fb_solveABCDE.Xd;
 GVL.Yd:=fb_solveABCDE.Yd;
 GVL.Xe:=fb_solveABCDE.Xe;
 GVL.Ye:=fb_solveABCDE.Ye;
-
-
 ////Brazos
 GVL.Xab:=(GVL.Xa+GVL.Xb)/2;
 GVL.Yab:=(GVL.Ya+GVL.Yb)/2;
@@ -55,41 +53,99 @@ GVL.Ycd:=(GVL.Yc+GVL.Yd)/2;
 GVL.Xde:=(GVL.Xd+GVL.Xe)/2;
 GVL.Yde:=(GVL.Yd+GVL.Ye)/2;
 
-//Consigna XcYc
-///Barrido para test
-fb_barridoXY.speed:=2;
-fb_barridoXY();
-GVL.Xc_sp:=fb_barridoXY.Xbarrido;
-GVL.Yc_sp:=fb_barridoXY.Ybarrido;
-///Serial
-///Fija
+//ADÓNDE VOY?
+///Consigna XcYc
+////Barrido para test
+//fb_barridoXY.speed:=2;
+//fb_barridoXY();
+//GVL.Xc_sp:=fb_barridoXY.Xbarrido;
+//GVL.Yc_sp:=fb_barridoXY.Ybarrido;
+////Serial
+////Fija
 GVL.Xc_sp:= Xc_test;
 GVL.Yc_sp:= Yc_test;
-
-
-//SolveAlfaBeta_sp
-fb_solveAlfaBeta.x:=GVL.Xc;
-fb_solveAlfaBeta.y:=GVL.Yc;
+///SolveAlfaBeta_sp
+fb_solveAlfaBeta.x:=GVL.Xc_sp;
+fb_solveAlfaBeta.y:=GVL.Yc_sp;
 fb_solveAlfaBeta();
 GVL.d1 :=fb_solveAlfaBeta.d1;
 GVL.d2 :=fb_solveAlfaBeta.d2;
 GVL.error := fb_solveAlfaBeta.error;
-GVL.alfa1:=180/GVL.Pi*fb_solveAlfaBeta.alfa1;
-GVL.beta1:=180/GVL.Pi*fb_solveAlfaBeta.beta1;
-GVL.alfa2:=180/GVL.Pi*fb_solveAlfaBeta.alfa2;
-GVL.beta2:=180/GVL.Pi*fb_solveAlfaBeta.beta2;
-GVL.alfa_sp:=180/GVL.Pi*fb_solveAlfaBeta.alfa;
-GVL.beta_sp:=180/GVL.Pi*fb_solveAlfaBeta.beta;
+GVL.alfa_sp:=fb_solveAlfaBeta.alfa;
+GVL.beta_sp:=fb_solveAlfaBeta.beta;
 
+//HE LLEGADO?
+GVL.en_objetivo_alfa:=(ABS(GVL.alfa-GVL.alfa_sp)<=GVL.deadband_angulo);
+IF GVL.en_objetivo_alfa THEN
+		IO.valv_alfa_mas:=FALSE;
+		IO.valv_alfa_menos:=FALSE;
+END_IF
+GVL.en_objetivo_beta:=(ABS(GVL.beta-GVL.beta_sp)<=GVL.deadband_angulo);
+IF GVL.en_objetivo_beta THEN
+		IO.valv_beta_mas:=FALSE;
+		IO.valv_beta_menos:=FALSE;
+END_IF
 
-]]></ST>
+//SI NO HE LLEGADO, ME MUEVO
+IF NOT GVL.en_objetivo_alfa THEN
+	IF GVL.alfa<GVL.alfa_sp THEN
+		IO.valv_alfa_mas:=TRUE;
+		IO.valv_alfa_menos:=FALSE;
+		ELSE IF GVL.alfa>GVL.alfa_sp THEN
+		IO.valv_alfa_mas:=FALSE;
+		IO.valv_alfa_menos:=TRUE;
+	END_IF
+END_IF
+END_IF
+IF NOT GVL.en_objetivo_beta THEN
+	IF GVL.beta<GVL.beta_sp THEN
+		IO.valv_beta_mas:=TRUE;
+		IO.valv_beta_menos:=FALSE;
+		ELSE IF GVL.beta>GVL.beta_sp THEN
+		IO.valv_beta_mas:=FALSE;
+		IO.valv_beta_menos:=TRUE;
+	END_IF
+END_IF
+END_IF
+
+//SI NO HE LLEGADO NO ACEPTO NUEVO OBJETIVO]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="257" Count="2" />
       <LineId Id="265" Count="9" />
       <LineId Id="319" Count="0" />
       <LineId Id="318" Count="0" />
-      <LineId Id="275" Count="42" />
+      <LineId Id="275" Count="3" />
+      <LineId Id="281" Count="8" />
+      <LineId Id="341" Count="0" />
+      <LineId Id="290" Count="8" />
+      <LineId Id="342" Count="0" />
+      <LineId Id="300" Count="0" />
+      <LineId Id="303" Count="6" />
+      <LineId Id="314" Count="1" />
+      <LineId Id="343" Count="0" />
+      <LineId Id="316" Count="0" />
+      <LineId Id="345" Count="0" />
+      <LineId Id="355" Count="1" />
+      <LineId Id="358" Count="0" />
+      <LineId Id="357" Count="0" />
+      <LineId Id="346" Count="0" />
+      <LineId Id="359" Count="2" />
+      <LineId Id="348" Count="0" />
+      <LineId Id="362" Count="0" />
+      <LineId Id="347" Count="0" />
+      <LineId Id="349" Count="1" />
+      <LineId Id="352" Count="0" />
+      <LineId Id="354" Count="0" />
+      <LineId Id="364" Count="1" />
+      <LineId Id="363" Count="0" />
+      <LineId Id="353" Count="0" />
+      <LineId Id="351" Count="0" />
+      <LineId Id="375" Count="0" />
+      <LineId Id="367" Count="7" />
+      <LineId Id="366" Count="0" />
+      <LineId Id="376" Count="0" />
+      <LineId Id="317" Count="0" />
       <LineId Id="129" Count="0" />
     </LineIds>
   </POU>

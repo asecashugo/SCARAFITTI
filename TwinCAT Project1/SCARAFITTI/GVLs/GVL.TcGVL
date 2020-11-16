@@ -11,7 +11,7 @@ Pi : REAL := 3.1416;
 
 d : REAL := 400;
 l1 : REAL := 1000; //longitud brazo proximal
-l2 : REAL := 1200; //longitud brazo distal
+l2 : REAL := 1400; //longitud brazo distal
 
 //Vértices robot
 
@@ -39,45 +39,34 @@ Ycd : REAL:= 0;
 Xde : REAL:= 0; 
 Yde : REAL:= 0;
 
-//Arrays de brazos?
-
-AB : ARRAY [1..2,1..2] OF REAL;
-BC : ARRAY [1..2,1..2] OF REAL;
-CD : ARRAY [1..2,1..2] OF REAL;
-DE : ARRAY [1..2,1..2] OF REAL;
-
 
 //Ángulos
 
-alfa : REAL:= 0; //ángulo del brazo pxosimal izquierdo
-alfa_sp : REAL:= 0; //setpoint ángulo del brazo pxosimal izquierdo
-beta : REAL:= 0; //ángulo del brazo pxosimal derecho
-beta_sp: REAL:= 0; //setpoint ángulo del brazo pxosimal derecho
+alfa : REAL:= 0; //ángulo del brazo proximal izquierdo
+alfa_sp : REAL:= 0; //setpoint ángulo del brazo proximal izquierdo
+beta : REAL:= 0; //ángulo del brazo proximal derecho
+beta_sp: REAL:= 0; //setpoint ángulo del brazo proximal derecho
 
-alfa1 : REAL:= 0; //ángulo del brazo pxosimal izquierdo
-beta1 : REAL:= 0; //ángulo del brazo pxosimal derecho
-alfa2 : REAL:= 0; //ángulo del brazo pxosimal izquierdo
-beta2 : REAL:= 0; //ángulo del brazo pxosimal derecho
+deadband_angulo : REAL:= 0.05; //banda de no actuación en torno a target [rad]
+
+alfa1 : REAL:= 0; 
+beta1 : REAL:= 0; 
+alfa2 : REAL:= 0; 
+beta2 : REAL:= 0; 
 
 
-	d1: REAL;
-	error AT %Q*: BOOL;
-	d2: REAL;
+d1: REAL;
+error AT %Q*: BOOL;
+d2: REAL;
 
-// Inputs
-
-DI_enc1_a AT %I*: BOOL;
-DI_enc1_b AT %I*: BOOL;
-DI_enc2_a AT %I*: BOOL;
-DI_enc2_b AT %I*: BOOL;
 
 alfa_enc : REAL :=0;
 beta_enc : REAL :=0;
 
-//Encoder
-Pulsos :UDINT := 600;
-TotalAlfa AT %I*: UDINT :=0;
-TotalBeta AT %I*: UDINT:=0;
+//Internas
+en_objetivo_alfa : BOOL; //brazo proximal izquierdo en posición objetivo
+en_objetivo_beta : BOOL; ///brazo proximal derecho en posición objetivo
+
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
