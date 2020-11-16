@@ -4,9 +4,6 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	
-blink AT %Q* : BOOL := 1;
-
-
 // Geometría del robot//
 //todo en mm//
 

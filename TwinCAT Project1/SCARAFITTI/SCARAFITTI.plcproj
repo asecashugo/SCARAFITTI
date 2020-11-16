@@ -24,13 +24,23 @@
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
+    <Compile Include="GVLs\IO.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="GVLs\ST_ErrHist.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FastTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\ENCODER2ANGLE.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\EncoderMeas.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\FB_BARRIDOXY.TcPOU">
@@ -49,6 +59,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\ENCODERtoANGLE.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\ENCODERPULSEtoANGLE.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\SERIALCOMM.TcPOU">

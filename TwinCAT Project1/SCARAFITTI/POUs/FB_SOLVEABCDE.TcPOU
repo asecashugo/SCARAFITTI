@@ -27,7 +27,8 @@ VAR_OUTPUT
 
 END_VAR
 VAR
-	aux : REAL;
+	aux1 : REAL;
+	aux2 : REAL;
 	A : REAL;
 	B : REAL;
 	C : REAL;
@@ -58,12 +59,13 @@ IF SQRT((Xd-Xb)*(Xd-Xb)+(Yd-Yb)*(Yd-Yb))>2*GVL.l2 THEN //B y D demaisado separad
 	ELSE IF Xb>=Xd THEN //brazos proximales cruzados
 		error:=TRUE;
 		ELSE //calculate Xc
-			aux:=(Yd-Yb)/(Xb-Xd);
-			A:=1+ aux*aux ;
-			B:=-2*(aux*Xb+Yb);
-			C:=Yb*Yb-GVL.l2*GVL.l2;
+			aux1:=(Xb*Xb-Xd*Xd+Yb*Yb-Yd*Yd)/(2*(Xb-Xd));
+			aux2:=-(Yb-Yd)/(Xb-Xd);
+			A:=1+ aux2*aux2 ;
+			B:=2*(aux1*aux2-Xb*aux2-Yb);
+			C:=aux1*aux1-2*Xb*aux1+Yb*Yb+Xb*Xb-GVL.l2*GVL.l2;
 			Yc := (-B+SQRT(B*B-4*A*C))/(2*A);
-			Xc := aux*Yc;
+			Xc := aux1+aux2*Yc;
 		END_IF
 		
 check_AB:=SQRT((Xb-Xa)*(Xb-Xa)+(Yb-Ya)*(Yb-Ya));
@@ -95,6 +97,7 @@ check_DE:=SQRT((Xd-Xe)*(Xd-Xe)+(Yd-Ye)*(Yd-Ye));
       <LineId Id="84" Count="1" />
       <LineId Id="87" Count="0" />
       <LineId Id="90" Count="2" />
+      <LineId Id="148" Count="0" />
       <LineId Id="98" Count="4" />
       <LineId Id="93" Count="0" />
       <LineId Id="106" Count="1" />

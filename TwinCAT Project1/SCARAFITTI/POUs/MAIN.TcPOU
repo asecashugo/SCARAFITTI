@@ -7,7 +7,7 @@ VAR
 fb_solveAlfaBeta:FB_SOLVEALFABETA;
 fb_solveABCDE:FB_SOLVEABCDE;
 fb_barridoXY:FB_BARRIDOXY;
-encoder1:ENCODER2ANGLE;
+
 
 Xc_test : REAL;
 Yc_test : REAL;
@@ -25,14 +25,9 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[//Blink
-GVL.blink := NOT(GVL.blink);
+IO.blink := NOT(IO.blink);
 
-//Dónde estoy?
-///Medir ángulos
-encoder1.encoder_in_reference:=0;
-encoder1.encoder_in:=GVL.TotalAlfa;
-encoder1();
-GVL.alfa:=encoder1.enc_angle;
+
 ///Resolver geometría
 ////SolveABCDE
 fb_solveABCDE.alfa:=GVL.alfa;
@@ -90,7 +85,8 @@ GVL.beta_sp:=180/GVL.Pi*fb_solveAlfaBeta.beta;
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="257" Count="17" />
+      <LineId Id="257" Count="2" />
+      <LineId Id="265" Count="9" />
       <LineId Id="319" Count="0" />
       <LineId Id="318" Count="0" />
       <LineId Id="275" Count="42" />

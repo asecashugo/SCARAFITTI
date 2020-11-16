@@ -15,7 +15,7 @@
   <IsTemplate>false</IsTemplate>
   <Layout>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;Layout&gt;
-  &lt;Window Guid="8ab0dba3-d99d-4614-89a9-b7dd58a9cf3d" LastFocused="132499365367782500" DockedSize="200" PopupSize="0" FloatingLocation="-1, -1" FloatingSize="550, 400" LastOpenDockSituation="Document" LastFixedDockSituation="Document" LastFixedDockLocation="Right" LastFloatingWindowGuid="00000000-0000-0000-0000-000000000000" LastDockContainerCount="0" LastDockContainerIndex="0" DockedWorkingSize="250, 400" DockedWindowGroupGuid="00000000-0000-0000-0000-000000000000" DockedIndexInWindowGroup="0" DockedSplitPath="0" DocumentWorkingSize="250, 400" DocumentWindowGroupGuid="68b4bdc3-030b-4f22-afe6-1ea955dd2de9" DocumentIndexInWindowGroup="0" DocumentSplitPath="0" FloatingWorkingSize="250, 400" FloatingWindowGroupGuid="00000000-0000-0000-0000-000000000000" FloatingIndexInWindowGroup="0" FloatingSplitPath="0" /&gt;
+  &lt;Window Guid="8ab0dba3-d99d-4614-89a9-b7dd58a9cf3d" LastFocused="132500332533465069" DockedSize="200" PopupSize="0" FloatingLocation="-1, -1" FloatingSize="550, 400" LastOpenDockSituation="Document" LastFixedDockSituation="Document" LastFixedDockLocation="Right" LastFloatingWindowGuid="00000000-0000-0000-0000-000000000000" LastDockContainerCount="0" LastDockContainerIndex="0" DockedWorkingSize="250, 400" DockedWindowGroupGuid="00000000-0000-0000-0000-000000000000" DockedIndexInWindowGroup="0" DockedSplitPath="0" DocumentWorkingSize="250, 400" DocumentWindowGroupGuid="68b4bdc3-030b-4f22-afe6-1ea955dd2de9" DocumentIndexInWindowGroup="0" DocumentSplitPath="0" FloatingWorkingSize="250, 400" FloatingWindowGroupGuid="00000000-0000-0000-0000-000000000000" FloatingIndexInWindowGroup="0" FloatingSplitPath="0" /&gt;
   &lt;DocumentContainer Dock="5"&gt;
     &lt;SplitLayoutSystem WorkingSize="250, 400" SplitMode="0"&gt;
       &lt;ControlLayoutSystem WorkingSize="250, 400" Guid="68b4bdc3-030b-4f22-afe6-1ea955dd2de9" Collapsed="0" SelectedControl="8ab0dba3-d99d-4614-89a9-b7dd58a9cf3d"&gt;
@@ -47,7 +47,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment></Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -67,7 +67,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>615e80d2-0810-4362-b3ca-aa6a3a1e6e42</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431124</IndexOffset>
+          <IndexOffset>385504</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Xd</Name>
@@ -128,7 +128,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment></Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -148,7 +148,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>60d9290e-8f25-4a52-ae24-e2d50f0104e9</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431100</IndexOffset>
+          <IndexOffset>385480</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Xb</Name>
@@ -209,7 +209,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment>Vértices robot</Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -229,7 +229,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>1e758e4a-f43a-4766-aabb-24ea6eb36b28</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431092</IndexOffset>
+          <IndexOffset>385472</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Xa</Name>
@@ -290,7 +290,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment>posición x del spray</Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -310,7 +310,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>df4eef70-b625-4e85-87c5-234ae5af5a2c</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431108</IndexOffset>
+          <IndexOffset>385488</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Xc</Name>
@@ -371,7 +371,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment></Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -391,7 +391,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>07f96531-8c75-4e3e-a247-fffcc54ad7bf</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431096</IndexOffset>
+          <IndexOffset>385476</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Ya</Name>
@@ -452,7 +452,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment></Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -472,7 +472,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>a49dc552-4d83-4096-b9bb-f6f2bcd92e47</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431132</IndexOffset>
+          <IndexOffset>385512</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Xe</Name>
@@ -533,7 +533,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment>posición y del spray</Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -553,7 +553,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>727b2b65-18e1-4b32-952d-4aa0c1b51fcf</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431116</IndexOffset>
+          <IndexOffset>385496</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Yc</Name>
@@ -614,7 +614,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment></Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -634,7 +634,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>eba58b0c-fb9e-488a-b5f9-c73033378f4d</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431104</IndexOffset>
+          <IndexOffset>385484</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Yb</Name>
@@ -695,7 +695,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment></Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -715,7 +715,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>6a5d19b0-98d3-44df-99bb-3de901ee53e4</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431136</IndexOffset>
+          <IndexOffset>385516</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Ye</Name>
@@ -776,7 +776,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment></Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -796,7 +796,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>0fe07d38-26ed-4433-ad2b-09bbf4366af2</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431128</IndexOffset>
+          <IndexOffset>385508</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Yd</Name>
@@ -857,7 +857,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment></Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -877,7 +877,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>d95cfe53-46ac-49d7-82b5-79a3c18b61fb</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431148</IndexOffset>
+          <IndexOffset>385528</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Xbc</Name>
@@ -938,7 +938,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment>Mitad de cada brazo</Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -958,7 +958,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>a1ceb2c4-8b58-4763-b35d-48e909491334</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431140</IndexOffset>
+          <IndexOffset>385520</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Xab</Name>
@@ -1019,7 +1019,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment></Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -1039,7 +1039,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>7c698ed8-87a1-486c-aa02-b501b2a11125</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431156</IndexOffset>
+          <IndexOffset>385536</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Xcd</Name>
@@ -1100,7 +1100,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment></Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -1120,7 +1120,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>bf7a7f19-6fca-4376-8f4a-b141d75b7594</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431164</IndexOffset>
+          <IndexOffset>385544</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Xde</Name>
@@ -1181,7 +1181,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment></Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -1201,7 +1201,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>2ada63de-deaa-4aaf-bfbf-6e0fa3b6c576</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431144</IndexOffset>
+          <IndexOffset>385524</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Yab</Name>
@@ -1262,7 +1262,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment></Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -1282,7 +1282,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>8a652652-7637-4c61-a81a-2e5395a912a0</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431152</IndexOffset>
+          <IndexOffset>385532</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Ybc</Name>
@@ -1343,7 +1343,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment></Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -1363,7 +1363,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>f6df8e2b-9d1f-470e-bda7-ca1ff10bc50e</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431160</IndexOffset>
+          <IndexOffset>385540</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Ycd</Name>
@@ -1424,7 +1424,7 @@
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
           <Comment></Comment>
-          <ContextMask>0</ContextMask>
+          <ContextMask>1</ContextMask>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -1444,7 +1444,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>4d03aece-4e6d-42d8-b500-4949fd79aad9</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>431168</IndexOffset>
+          <IndexOffset>385548</IndexOffset>
           <IsFileBased>false</IsFileBased>
           <IsHistorical>false</IsHistorical>
           <Name>Yde</Name>

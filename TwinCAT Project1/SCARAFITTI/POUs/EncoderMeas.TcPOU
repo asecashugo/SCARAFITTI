@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="EncoderMeas" Id="{0d96bc1c-ffb1-440d-b63c-eed900a16197}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM EncoderMeas
+VAR
+	
+encoder1:ENCODERPULSEtoANGLE;
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Dónde estoy?
+///Medir ángulos
+encoder1.A:=IO.encoder1_A;
+encoder1.B:=IO.encoder1_B;
+encoder1();
+GVL.alfa:=encoder1.angle;]]></ST>
+    </Implementation>
+    <LineIds Name="EncoderMeas">
+      <LineId Id="6" Count="4" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <Task Name="FastTask" Id="{e4b4b09b-af42-4a1e-831b-7e4c7d898f00}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>1000</CycleTime>
+    <Priority>1</Priority>
+    <PouCall>
+      <Name>EncoderMeas</Name>
+    </PouCall>
+    <TaskFBGuid>{49a1df57-03ad-439e-af91-14de833dcb57}</TaskFBGuid>
+    <Fb_init>{40bb2254-11d6-4d89-9161-b9b4ca602cfc}</Fb_init>
+    <Fb_exit>{99da2e7f-0ab5-4a38-91db-2da2c451eabf}</Fb_exit>
+    <CycleUpdate>{94ffc2f8-a0d5-4810-bca7-1c37bf6a969d}</CycleUpdate>
+    <PostCycleUpdate>{3cba9862-e791-439a-8274-93744906ac13}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

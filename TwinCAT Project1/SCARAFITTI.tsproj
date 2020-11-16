@@ -39,13 +39,16 @@
 		<System>
 			<Licenses>
 				<Target>
-					<ManualSelect>{BCA6EE0A-9CE1-4D3F-98CA-413ABC0D94FD}</ManualSelect>
 					<ManualSelect>{92583661-35AE-45CE-BD4F-C35BFE16F07E}</ManualSelect>
+					<ManualSelect>{BCA6EE0A-9CE1-4D3F-98CA-413ABC0D94FD}</ManualSelect>
 				</Target>
 			</Licenses>
 			<Tasks>
 				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
 					<Name>PlcTask</Name>
+				</Task>
+				<Task Id="4" Priority="1" CycleTime="10000" AmsPort="351" AdtTasks="true">
+					<Name>EncoderMeas</Name>
 				</Task>
 			</Tasks>
 		</System>
@@ -54,6 +57,18 @@
 				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="SCARAFITTI\SCARAFITTI.tmc">
 					<Name>SCARAFITTI Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Vars VarGrpType="1">
+						<Name>FastTask Inputs</Name>
+						<Var>
+							<Name>IO.encoder1_A</Name>
+							<Comment><![CDATA[INPUTS	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>IO.encoder1_B</Name>
+							<Type>BOOL</Type>
+						</Var>
+					</Vars>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
@@ -81,39 +96,46 @@
 							<Name>GVL.TotalBeta</Name>
 							<Type>UDINT</Type>
 						</Var>
+						<Var>
+							<Name>IO.encoder2_A</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>IO.encoder2_B</Name>
+							<Type>BOOL</Type>
+						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
 						<Name>PlcTask Outputs</Name>
 						<Var>
-							<Name>GVL.blink</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>GVL.error</Name>
 							<Type>BOOL</Type>
 						</Var>
-					</Vars>
-					<Vars VarGrpType="8">
-						<Name>PlcTask Retains</Name>
 						<Var>
-							<Name>MAIN.encoder1.encoder_in</Name>
-							<Type>UDINT</Type>
-							<InOut>7</InOut>
-						</Var>
-						<Var>
-							<Name>MAIN.encoder1.encoder_in_reference</Name>
-							<Type>UDINT</Type>
-							<InOut>7</InOut>
-						</Var>
-						<Var>
-							<Name>MAIN.encoder1.enc_angle</Name>
-							<Type>REAL</Type>
-							<InOut>7</InOut>
+							<Name>IO.blink</Name>
+							<Comment><![CDATA[OUTPUTS	]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 					</Vars>
+					<UnrestoredVarLinks ImportTime="2020-11-16T16:39:15">
+						<OwnerA Name="OutputSrc" Prefix="TIPC^SCARAFITTI^SCARAFITTI Instance" Type="2">
+							<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 10 (EL2004)">
+								<Link VarA="GVL.blink" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 1^Output" Size="1" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
 					<Contexts>
 						<Context>
 							<Id NeedCalleeCall="true">0</Id>
+							<Name>FastTask</Name>
+							<ManualConfig>
+								<OTCID>#x02010040</OTCID>
+							</ManualConfig>
+							<Priority>1</Priority>
+							<CycleTime>1000000</CycleTime>
+						</Context>
+						<Context>
+							<Id NeedCalleeCall="true">1</Id>
 							<Name>PlcTask</Name>
 							<ManualConfig>
 								<OTCID>#x02010030</OTCID>
@@ -123,7 +145,8 @@
 						</Context>
 					</Contexts>
 					<TaskPouOids>
-						<TaskPouOid Prio="20" OTCID="#x08502001"/>
+						<TaskPouOid Prio="1" OTCID="#x08502001"/>
+						<TaskPouOid Prio="20" OTCID="#x08502002"/>
 					</TaskPouOids>
 				</Instance>
 			</Project>
@@ -158,6 +181,9 @@
 				</AddressInfo>
 				<Image Id="1" AddrType="9" ImageType="3">
 					<Name>Image</Name>
+				</Image>
+				<Image Id="4" AddrType="10" ImageType="3">
+					<Name>Image-2</Name>
 				</Image>
 				<Box Id="5" BoxType="9099">
 					<Name>Term 7 (EK1200)</Name>
@@ -484,12 +510,14 @@
 	</Project>
 	<Mappings>
 		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
+		<MappingInfo Identifier="{00000000-2002-0850-0120-500841000403}" Id="#x02030020"/>
 		<OwnerA Name="TIPC^SCARAFITTI^SCARAFITTI Instance">
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 10 (EL2004)">
-				<Link VarA="PlcTask Outputs^GVL.blink" VarB="Channel 1^Output"/>
-			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 12 (EL5151)">
 				<Link VarA="PlcTask Inputs^GVL.TotalAlfa" VarB="ENC Inputs^Counter value"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 9 (EL1004)">
+				<Link VarA="FastTask Inputs^IO.encoder1_A" VarB="Channel 1^Input"/>
+				<Link VarA="FastTask Inputs^IO.encoder1_B" VarB="Channel 2^Input"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>
