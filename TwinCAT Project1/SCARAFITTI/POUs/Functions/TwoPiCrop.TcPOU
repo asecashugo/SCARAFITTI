@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="TwoPiCrop" Id="{65dcc3c2-f5ba-43ee-ac6a-141ce6fc5669}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION TwoPiCrop : REAL
+VAR_INPUT
+	in:REAL;
+END_VAR
+VAR
+	aux_LINT:LINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[aux_LINT:=REAL_TO_LINT(in*1000);
+aux_LINT:= aux_LINT MOD REAL_TO_LINT(1000*2*GVL.Pi);
+TwoPiCrop:= LINT_TO_REAL(aux_LINT)/1000;
+IF TwoPiCrop < 0 THEN
+	TwoPiCrop := 2*GVL.Pi - TwoPiCrop;
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="TwoPiCrop">
+      <LineId Id="7" Count="0" />
+      <LineId Id="15" Count="4" />
+      <LineId Id="14" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

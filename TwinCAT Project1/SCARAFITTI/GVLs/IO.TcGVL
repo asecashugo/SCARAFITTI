@@ -8,12 +8,18 @@ VAR_GLOBAL
 	encoder1_B AT %I* : BOOL;
 	encoder2_A AT %I* : BOOL;
 	encoder2_B AT %I* : BOOL;
+	
+// INPUTS SIMULACION
+	alfa_sim : REAL;
+	beta_sim : REAL;
+	
 //OUTPUTS	
 	blink AT %Q* : BOOL := 1;
 	valv_alfa_mas AT %Q* : BOOL;
 	valv_alfa_menos AT %Q* : BOOL;
 	valv_beta_mas AT %Q* : BOOL;
 	valv_beta_menos AT %Q* : BOOL;	
+	
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

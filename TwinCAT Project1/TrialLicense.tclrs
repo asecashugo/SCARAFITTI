@@ -2,9 +2,9 @@
 <TcLicenseInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2011/11/TcLicenseInfo">
 	<LicenseInfo>
 		<SystemId>{D4E1F282-3567-1998-C584-3DAF234205B4}</SystemId>
-		<IssueTime>2020-11-13T22:15:00</IssueTime>
-		<ExpireTime>2020-11-21T00:00:00</ExpireTime>
-		<LicenseKey>095068a1394454c76b140446ba3588c58a7ff6e3edc444e4b8bd4a9ffae9b5e75b6abdde6ccaa61e43e3a4dbb171457a54d92bc45adf0bc6466fe39c2c8a8e2a11c16fe624d0bcc629a1843de8af01bc71a85a9e6164ab2019a6ba2b08b586982d36389bd9a10a0d5339e2e88e3388e6931dd706174deec3fa98847c5be0d5e8f8ddb0e1f7f1261037d8c50ab3f90a98f9b12bdf683a5a211a4c6a404bf2d97f2ec369ef980288cd669da676a3bb92c7ee84b17bc9efcbf2bf0c31f0e18e215acd94d38724486e1ba0668a9cba01eced3eca6f6ed808389d465e3f3a4fd88d8c557d1236a54f49cdf5bebcab455ccac99b51017d5c76c0838464b573f986c1fb</LicenseKey>
+		<IssueTime>2020-11-22T10:13:00</IssueTime>
+		<ExpireTime>2020-11-30T00:00:00</ExpireTime>
+		<LicenseKey>923315069d30847e0f299e6b2fb5b41fd8de63e1521814277fe888f6a9e04f887613fc074bd44cb7a76033178f51566a3d2410c796493598ebbe778fadbde2731579c1da472d86f384c7a90a0c4d11d0e877ad7b3c8576318c1bc776b8cc1a3956b88d680e1eee69c2b8e7da05e1693c83bbd8c0dd00bd4372ab19c3c01b11e83326cbad0f5199a0123df00ff70b0d9ad47b013e3635d676721bf39e422fc4bba90ce332f836eb30ce5f0ef25e9083f0de38f5d31ce351cf7660c74290630e6c280dde1321366aba609e3bda272b38f67d5274739d8872753e1620adef9b22b9ccc8d0e153737d25024a42fb13aece82b6c0eec8a142e3a8e4ae6834a050e82d</LicenseKey>
 		<License>
 			<LicenseId>{4C256767-E6E6-4AF5-BD68-9F7ABAD0C200}</LicenseId>
 			<Name>TC3 ADS</Name>
@@ -21,14 +21,14 @@
 			<OrderNo>TC1200</OrderNo>
 		</License>
 		<License>
-			<LicenseId>{92583661-35AE-45CE-BD4F-C35BFE16F07E}</LicenseId>
-			<Name>TC3 Database-Server</Name>
-			<OrderNo>TF6420</OrderNo>
-		</License>
-		<License>
 			<LicenseId>{BCA6EE0A-9CE1-4D3F-98CA-413ABC0D94FD}</LicenseId>
 			<Name>TC3 Serial-Communication</Name>
 			<OrderNo>TF6340</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{92583661-35AE-45CE-BD4F-C35BFE16F07E}</LicenseId>
+			<Name>TC3 Database-Server</Name>
+			<OrderNo>TF6420</OrderNo>
 		</License>
 	</LicenseInfo>
 </TcLicenseInfo>

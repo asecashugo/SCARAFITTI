@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="Simulacion" Id="{1cb571e3-1b66-4606-979d-4d7d366bccdb}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Simulacion
+VAR
+	vel : REAL := 0.001;
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//nuevos ángulos
+IF IO.valv_alfa_mas THEN
+	IO.alfa_sim:=IO.alfa_sim + vel;
+	ELSE IF IO.valv_alfa_menos THEN
+		IO.alfa_sim := (IO.alfa_sim - vel);
+	END_IF
+
+END_IF
+
+IF IO.valv_beta_mas THEN
+	IO.beta_sim:=IO.beta_sim + vel;
+	ELSE IF IO.valv_beta_menos THEN
+		IO.beta_sim := IO.beta_sim - vel;
+	END_IF
+
+END_IF
+
+IO.alfa_sim:=TwoPiCrop(IO.alfa_sim);
+IO.beta_sim:=TwoPiCrop(IO.beta_sim);
+]]></ST>
+    </Implementation>
+    <LineIds Name="Simulacion">
+      <LineId Id="47" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="34" Count="2" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="38" Count="6" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="52" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -4,6 +4,9 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	
+simulacion : BOOL :=0;
+parada : BOOL:=1;
+
 // Geometría del robot//
 //todo en mm//
 

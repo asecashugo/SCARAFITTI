@@ -10,9 +10,10 @@ END_VAR
 VAR_OUTPUT
 	acum : DINT:=0;
 	angle :REAL;
+	estado : INT;
 END_VAR
 VAR
-	estado:INT:=0;
+
 END_VAR
 ]]></Declaration>
     <Implementation>

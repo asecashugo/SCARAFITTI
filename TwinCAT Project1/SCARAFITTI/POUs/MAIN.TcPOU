@@ -9,8 +9,9 @@ fb_solveABCDE:FB_SOLVEABCDE;
 fb_barridoXY:FB_BARRIDOXY;
 
 
-Xc_test : REAL;
-Yc_test : REAL;
+Xc_test : LINT;
+aux_ADS : INT;
+Yc_test : LINT;
 
 //test
 nVar: UDINT;
@@ -26,6 +27,7 @@ END_VAR
     <Implementation>
       <ST><![CDATA[//Blink
 IO.blink := NOT(IO.blink);
+
 
 //DÓNDE ESTOY?
 ///Resolver geometría
@@ -87,6 +89,8 @@ IF GVL.en_objetivo_beta THEN
 END_IF
 
 //SI NO HE LLEGADO, ME MUEVO
+///si no hay parada
+IF NOT(GVL.parada) THEN 
 IF NOT GVL.en_objetivo_alfa THEN
 	IF GVL.alfa<GVL.alfa_sp THEN
 		IO.valv_alfa_mas:=TRUE;
@@ -107,11 +111,14 @@ IF NOT GVL.en_objetivo_beta THEN
 	END_IF
 END_IF
 END_IF
+END_IF
 
 //SI NO HE LLEGADO NO ACEPTO NUEVO OBJETIVO]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="257" Count="2" />
+      <LineId Id="257" Count="1" />
+      <LineId Id="401" Count="0" />
+      <LineId Id="259" Count="0" />
       <LineId Id="265" Count="9" />
       <LineId Id="319" Count="0" />
       <LineId Id="318" Count="0" />
@@ -134,6 +141,7 @@ END_IF
       <LineId Id="348" Count="0" />
       <LineId Id="362" Count="0" />
       <LineId Id="347" Count="0" />
+      <LineId Id="398" Count="1" />
       <LineId Id="349" Count="1" />
       <LineId Id="352" Count="0" />
       <LineId Id="354" Count="0" />
@@ -145,6 +153,7 @@ END_IF
       <LineId Id="367" Count="7" />
       <LineId Id="366" Count="0" />
       <LineId Id="376" Count="0" />
+      <LineId Id="400" Count="0" />
       <LineId Id="317" Count="0" />
       <LineId Id="129" Count="0" />
     </LineIds>

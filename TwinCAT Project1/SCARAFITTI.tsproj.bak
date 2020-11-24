@@ -40,15 +40,14 @@
 			<Licenses>
 				<Target>
 					<ManualSelect>{92583661-35AE-45CE-BD4F-C35BFE16F07E}</ManualSelect>
-					<ManualSelect>{BCA6EE0A-9CE1-4D3F-98CA-413ABC0D94FD}</ManualSelect>
 				</Target>
 			</Licenses>
 			<Tasks>
 				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
 					<Name>PlcTask</Name>
 				</Task>
-				<Task Id="4" Priority="1" CycleTime="10000" AmsPort="351" AdtTasks="true">
-					<Name>EncoderMeas</Name>
+				<Task Id="4" Priority="1" CycleTime="40000" AmsPort="351" AdtTasks="true">
+					<Name>FastTask</Name>
 				</Task>
 			</Tasks>
 		</System>
@@ -68,9 +67,6 @@
 							<Name>IO.encoder1_B</Name>
 							<Type>BOOL</Type>
 						</Var>
-					</Vars>
-					<Vars VarGrpType="1">
-						<Name>PlcTask Inputs</Name>
 						<Var>
 							<Name>IO.encoder2_A</Name>
 							<Type>BOOL</Type>
@@ -130,7 +126,7 @@
 								<OTCID>#x02010040</OTCID>
 							</ManualConfig>
 							<Priority>1</Priority>
-							<CycleTime>1000000</CycleTime>
+							<CycleTime>4000000</CycleTime>
 						</Context>
 						<Context>
 							<Id NeedCalleeCall="true">1</Id>
@@ -180,7 +176,7 @@
 				<Image Id="1" AddrType="9" ImageType="3">
 					<Name>Image</Name>
 				</Image>
-				<Image Id="4" AddrType="10" ImageType="3">
+				<Image Id="3" AddrType="10" ImageType="3">
 					<Name>Image-2</Name>
 				</Image>
 				<Box Id="5" BoxType="9099">
@@ -492,23 +488,11 @@
 				</Box>
 				<EtherCAT/>
 			</Device>
-			<Device Id="2" DevType="11" AmsPort="28674">
-				<Name>Device 2 (COM Port)</Name>
-				<AddressInfo>
-					<Io>
-						<Port>1016</Port>
-					</Io>
-				</AddressInfo>
-				<Image Id="3" AddrType="1" ImageType="3">
-					<Name>Image</Name>
-				</Image>
-				<Serial Baud="9600" Port="1016" StopBit="1" RsType="1" UPSDisableSysShutdown="true" WaitTimeToShutdown="60" BufSize="4096" DataBit="8" SyncMode="true" FifoSize="16" ComPortNo="1" Timeout="300"/>
-			</Device>
 		</Io>
 	</Project>
 	<Mappings>
 		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
-		<MappingInfo Identifier="{00000000-2002-0850-0120-500841000403}" Id="#x02030020"/>
+		<MappingInfo Identifier="{00000000-2002-0850-0120-500831000403}" Id="#x02030020"/>
 		<OwnerA Name="TIPC^SCARAFITTI^SCARAFITTI Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 10 (EL2004)">
 				<Link VarA="PlcTask Outputs^IO.valv_alfa_mas" VarB="Channel 1^Output"/>
