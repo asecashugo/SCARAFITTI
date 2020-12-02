@@ -9,6 +9,8 @@ fb_solveABCDE:FB_SOLVEABCDE;
 fb_barridoXY:FB_BARRIDOXY;
 
 
+
+
 Xc_test : LINT;
 aux_ADS : INT;
 Yc_test : LINT;
@@ -35,16 +37,18 @@ IO.blink := NOT(IO.blink);
 fb_solveABCDE.alfa:=GVL.alfa;
 fb_solveABCDE.beta:=GVL.beta;
 fb_solveABCDE();
-GVL.Xa:=fb_solveABCDE.Xa;
-GVL.Ya:=fb_solveABCDE.Ya;
-GVL.Xb:=fb_solveABCDE.Xb;
-GVL.Yb:=fb_solveABCDE.Yb;
-GVL.Xc:=fb_solveABCDE.Xc;
-GVL.Yc:=fb_solveABCDE.Yc;
-GVL.Xd:=fb_solveABCDE.Xd;
-GVL.Yd:=fb_solveABCDE.Yd;
-GVL.Xe:=fb_solveABCDE.Xe;
-GVL.Ye:=fb_solveABCDE.Ye;
+GVL.Xa:=(fb_solveABCDE.Xa);
+GVL.Ya:=(fb_solveABCDE.Ya);
+GVL.Xb:=(fb_solveABCDE.Xb);
+GVL.Yb:=(fb_solveABCDE.Yb);
+GVL.Xc:=(fb_solveABCDE.Xc);
+IO.Xc_ADS:=REAL_TO_INT(GVL.Xc);
+IO.Yc_ADS:=REAL_TO_INT(GVL.Yc);
+GVL.Yc:=(fb_solveABCDE.Yc);
+GVL.Xd:=(fb_solveABCDE.Xd);
+GVL.Yd:=(fb_solveABCDE.Yd);
+GVL.Xe:=(fb_solveABCDE.Xe);
+GVL.Ye:=(fb_solveABCDE.Ye);
 ////Brazos
 GVL.Xab:=(GVL.Xa+GVL.Xb)/2;
 GVL.Yab:=(GVL.Ya+GVL.Yb)/2;
@@ -62,7 +66,22 @@ GVL.Yde:=(GVL.Yd+GVL.Ye)/2;
 //fb_barridoXY();
 //GVL.Xc_sp:=fb_barridoXY.Xbarrido;
 //GVL.Yc_sp:=fb_barridoXY.Ybarrido;
-////Serial
+////ADS Com
+IF IO.ready THEN
+	IF  LEFT(IO.string_in, 1)='G' THEN
+		IF LEFT(IO.string_in, 3) ='G00' THEN
+			IO.string_out:='comando G00 recibido';
+			GVL.comando_actual:=IO.string_in;
+			
+		END_IF
+		ELSE IF LEFT(IO.string_in, 3) ='G01' THEN
+			IO.string_out:='comando G01 recibido';
+			GVL.comando_actual:=IO.string_in;
+	ELSE IO.string_out:='Comando desconocido';
+END_IF
+END_IF
+END_IF
+
 ////Fija
 GVL.Xc_sp:= Xc_test;
 GVL.Yc_sp:= Yc_test;
@@ -87,6 +106,8 @@ IF GVL.en_objetivo_beta THEN
 		IO.valv_beta_mas:=FALSE;
 		IO.valv_beta_menos:=FALSE;
 END_IF
+GVL.en_objetivo := GVL.en_objetivo_alfa AND GVL.en_objetivo_beta;
+
 
 //SI NO HE LLEGADO, ME MUEVO
 ///si no hay parada
@@ -113,7 +134,14 @@ END_IF
 END_IF
 END_IF
 
-//SI NO HE LLEGADO NO ACEPTO NUEVO OBJETIVO]]></ST>
+//SI NO HE LLEGADO NO ACEPTO NUEVO OBJETIVO
+IF NOT GVL.en_objetivo THEN
+	IO.ready := FALSE;
+	IO.string_out := 'Not ready: Moving...';
+	ELSE
+		IO.ready := TRUE;
+		IO.string_out := concat(concat(concat(CONCAT( 'Ready at Xc=', INT_TO_STRING(IO.Xc_ADS)), 'mm, Yc='),  INT_TO_STRING(IO.Yc_ADS)) , 'mm');
+END_IF]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="257" Count="1" />
@@ -121,11 +149,24 @@ END_IF
       <LineId Id="259" Count="0" />
       <LineId Id="265" Count="9" />
       <LineId Id="319" Count="0" />
+      <LineId Id="449" Count="1" />
       <LineId Id="318" Count="0" />
       <LineId Id="275" Count="3" />
       <LineId Id="281" Count="8" />
       <LineId Id="341" Count="0" />
-      <LineId Id="290" Count="8" />
+      <LineId Id="290" Count="7" />
+      <LineId Id="483" Count="0" />
+      <LineId Id="488" Count="0" />
+      <LineId Id="490" Count="0" />
+      <LineId Id="495" Count="0" />
+      <LineId Id="504" Count="0" />
+      <LineId Id="506" Count="0" />
+      <LineId Id="496" Count="2" />
+      <LineId Id="505" Count="0" />
+      <LineId Id="489" Count="0" />
+      <LineId Id="487" Count="0" />
+      <LineId Id="500" Count="2" />
+      <LineId Id="298" Count="0" />
       <LineId Id="342" Count="0" />
       <LineId Id="300" Count="0" />
       <LineId Id="303" Count="6" />
@@ -139,6 +180,7 @@ END_IF
       <LineId Id="346" Count="0" />
       <LineId Id="359" Count="2" />
       <LineId Id="348" Count="0" />
+      <LineId Id="484" Count="1" />
       <LineId Id="362" Count="0" />
       <LineId Id="347" Count="0" />
       <LineId Id="398" Count="1" />
@@ -156,6 +198,11 @@ END_IF
       <LineId Id="400" Count="0" />
       <LineId Id="317" Count="0" />
       <LineId Id="129" Count="0" />
+      <LineId Id="425" Count="0" />
+      <LineId Id="474" Count="0" />
+      <LineId Id="477" Count="2" />
+      <LineId Id="481" Count="0" />
+      <LineId Id="480" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

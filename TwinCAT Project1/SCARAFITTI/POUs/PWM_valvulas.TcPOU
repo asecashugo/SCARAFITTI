@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="PWM_valvulas" Id="{dd73676d-6682-49ad-bf70-d2556d73c910}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PWM_valvulas
+VAR
+	
+pwm1 : FB_CTRL_PWM_OUT;
+pwm2 : FB_CTRL_PWM_OUT;
+stParams                : ST_CTRL_PWM_OUT_PARAMS;
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//parametrización PWM
+stParams.bInstantPWMUpdate:=FALSE;
+stParams.tPWMPeriod:=T#10MS;
+stParams.tTaskCycleTime:=T#1MS;
+pwm1(stParams:=stParams);
+pwm1.eMode:=E_CTRL_MODE.eCTRL_MODE_ACTIVE;
+pwm2(stParams:=stParams);
+pwm2.eMode:=E_CTRL_MODE.eCTRL_MODE_ACTIVE;
+
+//Cilindro 1
+IF GVL.Cilindro1.regimen > 0 THEN
+	pwm1.fPwmInput:=GVL.Cilindro1.regimen;
+	IO.valv_alfa_mas:= pwm1.bPwmOutBitPos;
+	IO.valv_alfa_menos:=0;
+	GVL.Cilindro1.extendiendo:=TRUE;
+	GVL.Cilindro1.retrayendo:=FALSE;
+	GVL.Cilindro1.parado:=FALSE;
+	ELSE IF GVL.Cilindro1.regimen < 0 THEN
+			pwm1.fPwmInput:=-GVL.Cilindro1.regimen; //para mantenerlo positivo
+			IO.valv_alfa_mas:= 0;
+			IO.valv_alfa_menos:= pwm1.bPwmOutBitPos;
+			GVL.Cilindro1.extendiendo:=FALSE;
+			GVL.Cilindro1.retrayendo:=TRUE;
+			GVL.Cilindro1.parado:=FALSE;
+	ELSE 
+	IO.valv_alfa_mas:= 0;
+	IO.valv_alfa_menos:=0;
+	GVL.Cilindro1.extendiendo:=FALSE;
+	GVL.Cilindro1.retrayendo:=FALSE;
+	GVL.Cilindro1.parado:=TRUE;
+	END_IF 
+END_IF
+
+//Cilindro 2
+IF GVL.Cilindro2.regimen > 0 THEN
+	pwm2.fPwmInput:=GVL.Cilindro2.regimen;
+	IO.valv_beta_mas:= pwm2.bPwmOutBitPos;
+	IO.valv_beta_menos:= 0;
+	GVL.Cilindro2.extendiendo:=TRUE;
+	GVL.Cilindro2.retrayendo:=FALSE;
+	GVL.Cilindro2.parado:=FALSE;
+	ELSE IF GVL.Cilindro2.regimen < 0 THEN
+			pwm2.fPwmInput:=-GVL.Cilindro2.regimen; //para mantenerlo positivo
+			IO.valv_beta_mas:=0;
+			IO.valv_beta_menos:= pwm2.bPwmOutBitPos;
+			GVL.Cilindro2.extendiendo:=FALSE;
+			GVL.Cilindro2.retrayendo:=TRUE;
+			GVL.Cilindro2.parado:=FALSE;
+	ELSE 
+	IO.valv_beta_mas:=0;
+	IO.valv_beta_menos:=0;
+	GVL.Cilindro2.extendiendo:=FALSE;
+	GVL.Cilindro2.retrayendo:=FALSE;
+	GVL.Cilindro2.parado:=TRUE;
+	END_IF 
+END_IF
+
+
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="PWM_valvulas">
+      <LineId Id="17" Count="1" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="79" Count="3" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="86" Count="0" />
+      <LineId Id="42" Count="1" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="85" Count="0" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="59" Count="4" />
+      <LineId Id="87" Count="0" />
+      <LineId Id="64" Count="4" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="69" Count="4" />
+      <LineId Id="89" Count="0" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="75" Count="2" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="12" Count="1" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="10" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

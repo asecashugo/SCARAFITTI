@@ -66,10 +66,15 @@ d2: REAL;
 alfa_enc : REAL :=0;
 beta_enc : REAL :=0;
 
+//cilindros
+Cilindro1 : Cilindro;
+Cilindro2 : Cilindro;
+
 //Internas
 en_objetivo_alfa : BOOL; //brazo proximal izquierdo en posición objetivo
 en_objetivo_beta : BOOL; ///brazo proximal derecho en posición objetivo
-
+en_objetivo: BOOL; ///ambos en objetivo
+comando_actual : STRING := 'Default comando actual';
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

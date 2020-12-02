@@ -2,8 +2,11 @@
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <Task Name="FastTask" Id="{e4b4b09b-af42-4a1e-831b-7e4c7d898f00}">
     <!--CycleTime in micro seconds.-->
-    <CycleTime>4000</CycleTime>
+    <CycleTime>1000</CycleTime>
     <Priority>1</Priority>
+    <PouCall>
+      <Name>PWM_valvulas</Name>
+    </PouCall>
     <PouCall>
       <Name>EncoderMeas</Name>
     </PouCall>

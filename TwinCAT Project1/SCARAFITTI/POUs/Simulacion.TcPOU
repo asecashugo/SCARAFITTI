@@ -26,8 +26,7 @@ IF IO.valv_beta_mas THEN
 END_IF
 
 IO.alfa_sim:=TwoPiCrop(IO.alfa_sim);
-IO.beta_sim:=TwoPiCrop(IO.beta_sim);
-]]></ST>
+IO.beta_sim:=TwoPiCrop(IO.beta_sim);]]></ST>
     </Implementation>
     <LineIds Name="Simulacion">
       <LineId Id="47" Count="0" />
@@ -41,7 +40,6 @@ IO.beta_sim:=TwoPiCrop(IO.beta_sim);
       <LineId Id="54" Count="0" />
       <LineId Id="51" Count="0" />
       <LineId Id="53" Count="0" />
-      <LineId Id="52" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

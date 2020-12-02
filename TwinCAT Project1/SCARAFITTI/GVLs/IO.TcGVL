@@ -13,6 +13,10 @@ VAR_GLOBAL
 	alfa_sim : REAL;
 	beta_sim : REAL;
 	
+// INPUTS ADS
+	string_in : STRING := 'Default command PC-PLC';
+	string_out : STRING:= 'Default feedback PLC-PC';
+	
 //OUTPUTS	
 	blink AT %Q* : BOOL := 1;
 	valv_alfa_mas AT %Q* : BOOL;
@@ -20,6 +24,10 @@ VAR_GLOBAL
 	valv_beta_mas AT %Q* : BOOL;
 	valv_beta_menos AT %Q* : BOOL;	
 	
+//OUTPUTS ADS
+	Xc_ADS : INT;
+	Yc_ADS : INT;
+	ready: BOOL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
