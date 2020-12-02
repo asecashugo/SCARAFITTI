@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="EncoderMeas" Id="{0d96bc1c-ffb1-440d-b63c-eed900a16197}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM EncoderMeas
+VAR
+	
+encoder1:ENCODERPULSEtoANGLE;
+encoder2:ENCODERPULSEtoANGLE;
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Dónde estoy?
+
+///Realidad
+IF NOT(GVL.simulacion) THEN
+////Medir ángulos
+encoder1.A:=IO.encoder1_A;
+encoder1.B:=IO.encoder1_B;
+encoder1();
+encoder2.A:=IO.encoder2_A;
+encoder2.B:=IO.encoder2_B;
+encoder2();
+GVL.alfa:=encoder1.angle;
+GVL.beta:=encoder2.angle;
+END_IF
+
+IF GVL.simulacion THEN
+///Simulación
+GVL.alfa:=IO.alfa_sim;
+GVL.beta:=IO.beta_sim;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="EncoderMeas">
+      <LineId Id="6" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="7" Count="3" />
+      <LineId Id="30" Count="1" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="24" Count="1" />
+      <LineId Id="27" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

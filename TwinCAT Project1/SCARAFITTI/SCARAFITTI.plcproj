@@ -40,7 +40,10 @@
     <Compile Include="FastTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\EncoderMeas.TcPOU">
+    <Compile Include="POUs\Actuadores\PWM_valvulas.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Comunicacion\InterpretarComando.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\FB_BARRIDOXY.TcPOU">
@@ -61,7 +64,7 @@
     <Compile Include="POUs\ENCODERPULSEtoANGLE.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PWM_valvulas.TcPOU">
+    <Compile Include="POUs\Sensores\EncoderMeas.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Simulacion.TcPOU">
@@ -75,6 +78,9 @@
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
     <Folder Include="POUs\Functions" />
+    <Folder Include="POUs\Comunicacion" />
+    <Folder Include="POUs\Actuadores" />
+    <Folder Include="POUs\Sensores" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

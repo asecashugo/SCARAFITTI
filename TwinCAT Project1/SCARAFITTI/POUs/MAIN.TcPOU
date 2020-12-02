@@ -7,6 +7,7 @@ VAR
 fb_solveAlfaBeta:FB_SOLVEALFABETA;
 fb_solveABCDE:FB_SOLVEABCDE;
 fb_barridoXY:FB_BARRIDOXY;
+InterpretarComando : InterpretarComando;
 
 
 
@@ -67,24 +68,11 @@ GVL.Yde:=(GVL.Yd+GVL.Ye)/2;
 //GVL.Xc_sp:=fb_barridoXY.Xbarrido;
 //GVL.Yc_sp:=fb_barridoXY.Ybarrido;
 ////ADS Com
-IF IO.ready THEN
-	IF  LEFT(IO.string_in, 1)='G' THEN
-		IF LEFT(IO.string_in, 3) ='G00' THEN
-			IO.string_out:='comando G00 recibido';
-			GVL.comando_actual:=IO.string_in;
-			
-		END_IF
-		ELSE IF LEFT(IO.string_in, 3) ='G01' THEN
-			IO.string_out:='comando G01 recibido';
-			GVL.comando_actual:=IO.string_in;
-	ELSE IO.string_out:='Comando desconocido';
-END_IF
-END_IF
-END_IF
+	InterpretarComando();
 
 ////Fija
-GVL.Xc_sp:= Xc_test;
-GVL.Yc_sp:= Yc_test;
+//GVL.Xc_sp:= Xc_test;
+//GVL.Yc_sp:= Yc_test;
 ///SolveAlfaBeta_sp
 fb_solveAlfaBeta.x:=GVL.Xc_sp;
 fb_solveAlfaBeta.y:=GVL.Yc_sp;
@@ -137,7 +125,7 @@ END_IF
 //SI NO HE LLEGADO NO ACEPTO NUEVO OBJETIVO
 IF NOT GVL.en_objetivo THEN
 	IO.ready := FALSE;
-	IO.string_out := 'Not ready: Moving...';
+	IO.string_out := CONCAT('Executing: ',gvl.comando_actual);
 	ELSE
 		IO.ready := TRUE;
 		IO.string_out := concat(concat(concat(CONCAT( 'Ready at Xc=', INT_TO_STRING(IO.Xc_ADS)), 'mm, Yc='),  INT_TO_STRING(IO.Yc_ADS)) , 'mm');
@@ -155,17 +143,8 @@ END_IF]]></ST>
       <LineId Id="281" Count="8" />
       <LineId Id="341" Count="0" />
       <LineId Id="290" Count="7" />
-      <LineId Id="483" Count="0" />
-      <LineId Id="488" Count="0" />
-      <LineId Id="490" Count="0" />
-      <LineId Id="495" Count="0" />
-      <LineId Id="504" Count="0" />
-      <LineId Id="506" Count="0" />
-      <LineId Id="496" Count="2" />
-      <LineId Id="505" Count="0" />
-      <LineId Id="489" Count="0" />
-      <LineId Id="487" Count="0" />
-      <LineId Id="500" Count="2" />
+      <LineId Id="534" Count="0" />
+      <LineId Id="502" Count="0" />
       <LineId Id="298" Count="0" />
       <LineId Id="342" Count="0" />
       <LineId Id="300" Count="0" />
