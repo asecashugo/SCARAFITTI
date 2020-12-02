@@ -43,6 +43,9 @@
     <Compile Include="POUs\Actuadores\PWM_valvulas.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Comunicacion\EjecutarComando.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Comunicacion\InterpretarComando.TcPOU">
       <SubType>Code</SubType>
     </Compile>

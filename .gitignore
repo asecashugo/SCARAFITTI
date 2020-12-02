@@ -2,3 +2,5 @@
 /SCARAFITTI.project.~u
 *.bak
 *.bak
+/.vs/SCARAFITTI/v15/.suo
+*.suo

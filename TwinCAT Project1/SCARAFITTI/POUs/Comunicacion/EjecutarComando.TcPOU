@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="EjecutarComando" Id="{44be1fb8-f127-407a-84ef-7ce9815273f2}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK EjecutarComando
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	dalfa : REAL;
+	dbeta : REAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF NOT(GVL.parada) THEN 
+	IF GVL.comando_actual_tipo='G00' THEN
+		///inicializar regimenes a cero
+		GVL.Cilindro1.regimen:=0;
+		GVL.Cilindro2.regimen:=0;
+		IF NOT GVL.en_objetivo_alfa THEN
+	IF GVL.alfa<GVL.alfa_sp THEN
+		GVL.Cilindro1.regimen:=GVL.regimen_maximo;
+		ELSE IF GVL.alfa>GVL.alfa_sp THEN
+		GVL.Cilindro1.regimen:=-GVL.regimen_maximo;
+	END_IF
+END_IF
+END_IF
+IF NOT GVL.en_objetivo_beta THEN
+	IF GVL.beta<GVL.beta_sp THEN
+		GVL.Cilindro2.regimen:=GVL.regimen_maximo;
+		ELSE IF GVL.beta>GVL.beta_sp THEN
+		GVL.Cilindro2.regimen:=-GVL.regimen_maximo;
+	END_IF
+END_IF
+END_IF
+	ELSE IF GVL.comando_actual_tipo='G01' THEN
+		///inicializar regimenes a cero
+		GVL.Cilindro1.regimen:=0;
+		GVL.Cilindro2.regimen:=0;
+		IF NOT GVL.en_objetivo THEN
+		///determinar la diferencia con el objetivo en alfa y beta
+		dalfa:=GVL.alfa_sp-GVL.alfa;
+		dbeta:=GVL.beta_sp-GVL.beta;
+		//si alfa está más lejos que beta
+		IF ABS(dalfa)>ABS(dbeta) THEN
+			IF NOT GVL.en_objetivo_alfa THEN
+			IF dalfa > 0 THEN
+				//mover cilindro 1 a velocidad máxima
+				GVL.Cilindro1.regimen:=GVL.regimen_maximo;
+				ELSE
+					//o mínima
+					GVL.Cilindro1.regimen:=-GVL.regimen_maximo;
+				END_IF
+			END_IF
+				//y mover cilindro 2 a menor velocidad dbeta/dalfa
+			IF NOT GVL.en_objetivo_beta THEN
+				IF dbeta >0 THEN
+					GVL.Cilindro2.regimen:=GVL.regimen_maximo*ABS(dbeta/dalfa);
+					ELSE
+						GVL.Cilindro2.regimen:=-GVL.regimen_maximo*ABS(dbeta/dalfa);
+					END_IF
+			END_IF
+			END_IF
+			END_IF
+		
+		END_IF
+	END_IF
+	END_IF
+	
+	]]></ST>
+    </Implementation>
+    <LineIds Name="EjecutarComando">
+      <LineId Id="10" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="106" Count="0" />
+      <LineId Id="108" Count="1" />
+      <LineId Id="35" Count="1" />
+      <LineId Id="38" Count="1" />
+      <LineId Id="41" Count="5" />
+      <LineId Id="48" Count="1" />
+      <LineId Id="51" Count="2" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="120" Count="1" />
+      <LineId Id="119" Count="0" />
+      <LineId Id="98" Count="0" />
+      <LineId Id="87" Count="0" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="81" Count="0" />
+      <LineId Id="94" Count="0" />
+      <LineId Id="82" Count="0" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="124" Count="0" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="90" Count="1" />
+      <LineId Id="95" Count="0" />
+      <LineId Id="92" Count="0" />
+      <LineId Id="97" Count="0" />
+      <LineId Id="125" Count="0" />
+      <LineId Id="96" Count="0" />
+      <LineId Id="126" Count="0" />
+      <LineId Id="101" Count="4" />
+      <LineId Id="127" Count="0" />
+      <LineId Id="89" Count="0" />
+      <LineId Id="99" Count="0" />
+      <LineId Id="86" Count="0" />
+      <LineId Id="85" Count="0" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="77" Count="1" />
+      <LineId Id="55" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -8,6 +8,7 @@ fb_solveAlfaBeta:FB_SOLVEALFABETA;
 fb_solveABCDE:FB_SOLVEABCDE;
 fb_barridoXY:FB_BARRIDOXY;
 InterpretarComando : InterpretarComando;
+EjecutarComando: EjecutarComando;
 
 
 
@@ -80,47 +81,18 @@ fb_solveAlfaBeta();
 GVL.d1 :=fb_solveAlfaBeta.d1;
 GVL.d2 :=fb_solveAlfaBeta.d2;
 GVL.error := fb_solveAlfaBeta.error;
-GVL.alfa_sp:=fb_solveAlfaBeta.alfa;
-GVL.beta_sp:=fb_solveAlfaBeta.beta;
+GVL.alfa_sp:=MIN(MAX(gvl.pi/2,fb_solveAlfaBeta.alfa),GVL.Pi);
+GVL.beta_sp:=MIN(MAX(0,fb_solveAlfaBeta.beta),GVL.Pi/2);
 
 //HE LLEGADO?
 GVL.en_objetivo_alfa:=(ABS(GVL.alfa-GVL.alfa_sp)<=GVL.deadband_angulo);
-IF GVL.en_objetivo_alfa THEN
-		IO.valv_alfa_mas:=FALSE;
-		IO.valv_alfa_menos:=FALSE;
-END_IF
 GVL.en_objetivo_beta:=(ABS(GVL.beta-GVL.beta_sp)<=GVL.deadband_angulo);
-IF GVL.en_objetivo_beta THEN
-		IO.valv_beta_mas:=FALSE;
-		IO.valv_beta_menos:=FALSE;
-END_IF
 GVL.en_objetivo := GVL.en_objetivo_alfa AND GVL.en_objetivo_beta;
 
 
 //SI NO HE LLEGADO, ME MUEVO
 ///si no hay parada
-IF NOT(GVL.parada) THEN 
-IF NOT GVL.en_objetivo_alfa THEN
-	IF GVL.alfa<GVL.alfa_sp THEN
-		IO.valv_alfa_mas:=TRUE;
-		IO.valv_alfa_menos:=FALSE;
-		ELSE IF GVL.alfa>GVL.alfa_sp THEN
-		IO.valv_alfa_mas:=FALSE;
-		IO.valv_alfa_menos:=TRUE;
-	END_IF
-END_IF
-END_IF
-IF NOT GVL.en_objetivo_beta THEN
-	IF GVL.beta<GVL.beta_sp THEN
-		IO.valv_beta_mas:=TRUE;
-		IO.valv_beta_menos:=FALSE;
-		ELSE IF GVL.beta>GVL.beta_sp THEN
-		IO.valv_beta_mas:=FALSE;
-		IO.valv_beta_menos:=TRUE;
-	END_IF
-END_IF
-END_IF
-END_IF
+EjecutarComando();
 
 //SI NO HE LLEGADO NO ACEPTO NUEVO OBJETIVO
 IF NOT GVL.en_objetivo THEN
@@ -152,29 +124,12 @@ END_IF]]></ST>
       <LineId Id="314" Count="1" />
       <LineId Id="343" Count="0" />
       <LineId Id="316" Count="0" />
-      <LineId Id="345" Count="0" />
-      <LineId Id="355" Count="1" />
-      <LineId Id="358" Count="0" />
-      <LineId Id="357" Count="0" />
-      <LineId Id="346" Count="0" />
-      <LineId Id="359" Count="2" />
-      <LineId Id="348" Count="0" />
+      <LineId Id="345" Count="1" />
       <LineId Id="484" Count="1" />
       <LineId Id="362" Count="0" />
       <LineId Id="347" Count="0" />
-      <LineId Id="398" Count="1" />
-      <LineId Id="349" Count="1" />
-      <LineId Id="352" Count="0" />
-      <LineId Id="354" Count="0" />
-      <LineId Id="364" Count="1" />
-      <LineId Id="363" Count="0" />
-      <LineId Id="353" Count="0" />
-      <LineId Id="351" Count="0" />
-      <LineId Id="375" Count="0" />
-      <LineId Id="367" Count="7" />
-      <LineId Id="366" Count="0" />
-      <LineId Id="376" Count="0" />
-      <LineId Id="400" Count="0" />
+      <LineId Id="398" Count="0" />
+      <LineId Id="560" Count="0" />
       <LineId Id="317" Count="0" />
       <LineId Id="129" Count="0" />
       <LineId Id="425" Count="0" />

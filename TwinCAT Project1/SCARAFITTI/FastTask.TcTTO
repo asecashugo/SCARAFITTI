@@ -10,6 +10,9 @@
     <PouCall>
       <Name>PWM_valvulas</Name>
     </PouCall>
+    <PouCall>
+      <Name>Simulacion</Name>
+    </PouCall>
     <TaskFBGuid>{49a1df57-03ad-439e-af91-14de833dcb57}</TaskFBGuid>
     <Fb_init>{40bb2254-11d6-4d89-9161-b9b4ca602cfc}</Fb_init>
     <Fb_exit>{99da2e7f-0ab5-4a38-91db-2da2c451eabf}</Fb_exit>
