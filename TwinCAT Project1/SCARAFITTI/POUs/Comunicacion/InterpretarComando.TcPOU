@@ -13,9 +13,11 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
-IF (IO.ready AND IO.string_in<>GVL.ultimo_comando) THEN
-
+      <ST><![CDATA[IF ((IO.ready AND IO.string_in<>GVL.ultimo_comando)OR IO.string_in='reset') THEN
+///excepcion para reset
+IF IO.string_in='reset' THEN
+	IO.string_in:='G00 X000 Y000';
+END_IF
 	IF  LEFT(IO.string_in, 1)='G' THEN
 		IF LEFT(IO.string_in, 3) ='G00' THEN
 			IO.string_out:='comando G00 recibido';
@@ -62,21 +64,34 @@ IF (IO.ready AND IO.string_in<>GVL.ultimo_comando) THEN
 			GVL.comando_actual_tipo:='G01';
 			IO.ready:=FALSE;
 			END_IF
+			END_IF
+			END_IF
+END_IF
+	///buscar comandos F de velocidad
+	IF (FIND(IO.string_in,'F')>0) THEN
+		aux_int:=FIND(IO.string_in,'F');
+		aux_str:=MID(IO.string_in,2,aux_int+1);
+		GVL.regimen_maximo:=STRING_TO_INT(aux_str);
+		END_IF
 
-	ELSE IO.string_out:='Comando desconocido';
+//comando desconocido
+IF ((FIND(IO.string_in,'F')=0) AND (FIND(IO.string_in,'G')=0)) THEN
+	 IO.string_out:='Comando desconocido';
 		GVL.comando_actual:='Comando desconocido';
 		IO.ready:=TRUE;
 	END_IF
-	END_IF
-END_IF
+
+
 END_IF
 
 //actualizar último comando
 GVL.ultimo_comando:=IO.string_in;]]></ST>
     </Implementation>
     <LineIds Name="InterpretarComando">
-      <LineId Id="71" Count="0" />
-      <LineId Id="10" Count="4" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="128" Count="0" />
+      <LineId Id="125" Count="1" />
+      <LineId Id="11" Count="3" />
       <LineId Id="46" Count="0" />
       <LineId Id="41" Count="0" />
       <LineId Id="55" Count="0" />
@@ -97,13 +112,25 @@ GVL.ultimo_comando:=IO.string_in;]]></ST>
       <LineId Id="18" Count="1" />
       <LineId Id="92" Count="18" />
       <LineId Id="89" Count="0" />
+      <LineId Id="134" Count="0" />
+      <LineId Id="151" Count="0" />
+      <LineId Id="150" Count="0" />
+      <LineId Id="149" Count="0" />
       <LineId Id="91" Count="0" />
+      <LineId Id="133" Count="0" />
+      <LineId Id="132" Count="0" />
+      <LineId Id="131" Count="0" />
+      <LineId Id="129" Count="0" />
+      <LineId Id="135" Count="0" />
+      <LineId Id="130" Count="0" />
+      <LineId Id="136" Count="0" />
       <LineId Id="21" Count="0" />
       <LineId Id="24" Count="0" />
       <LineId Id="58" Count="0" />
       <LineId Id="25" Count="0" />
       <LineId Id="88" Count="0" />
-      <LineId Id="22" Count="1" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="137" Count="0" />
       <LineId Id="75" Count="2" />
     </LineIds>
   </POU>

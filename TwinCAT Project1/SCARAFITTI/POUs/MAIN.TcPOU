@@ -34,6 +34,9 @@ IO.blink := NOT(IO.blink);
 
 
 //DÓNDE ESTOY?
+///comunicar ángulos
+IO.alfa_deg:=GVL.alfa*180/GVL.Pi;
+IO.beta_deg:=GVL.beta*180/GVL.Pi;
 ///Resolver geometría
 ////SolveABCDE
 fb_solveABCDE.alfa:=GVL.alfa;
@@ -94,20 +97,15 @@ GVL.en_objetivo := GVL.en_objetivo_alfa AND GVL.en_objetivo_beta;
 ///si no hay parada
 EjecutarComando();
 
-//SI NO HE LLEGADO NO ACEPTO NUEVO OBJETIVO
-IF NOT GVL.en_objetivo THEN
-	IO.ready := FALSE;
-	IO.string_out := CONCAT('Executing: ',gvl.comando_actual);
-	ELSE
-		IO.ready := TRUE;
-		IO.string_out := concat(concat(concat(CONCAT( 'Ready at Xc=', INT_TO_STRING(IO.Xc_ADS)), 'mm, Yc='),  INT_TO_STRING(IO.Yc_ADS)) , 'mm');
-END_IF]]></ST>
+]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="257" Count="1" />
       <LineId Id="401" Count="0" />
       <LineId Id="259" Count="0" />
-      <LineId Id="265" Count="9" />
+      <LineId Id="265" Count="0" />
+      <LineId Id="588" Count="2" />
+      <LineId Id="266" Count="8" />
       <LineId Id="319" Count="0" />
       <LineId Id="449" Count="1" />
       <LineId Id="318" Count="0" />
@@ -131,11 +129,6 @@ END_IF]]></ST>
       <LineId Id="398" Count="0" />
       <LineId Id="560" Count="0" />
       <LineId Id="317" Count="0" />
-      <LineId Id="129" Count="0" />
-      <LineId Id="425" Count="0" />
-      <LineId Id="474" Count="0" />
-      <LineId Id="477" Count="2" />
-      <LineId Id="481" Count="0" />
       <LineId Id="480" Count="0" />
     </LineIds>
   </POU>

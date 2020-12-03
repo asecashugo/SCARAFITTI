@@ -69,7 +69,7 @@ beta_enc : REAL :=0;
 //cilindros
 Cilindro1 : Cilindro;
 Cilindro2 : Cilindro;
-regimen_maximo : REAL :=100;
+regimen_maximo : INT :=100;
 
 //Internas
 en_objetivo_alfa : BOOL; //brazo proximal izquierdo en posición objetivo

@@ -10,7 +10,7 @@ VAR_GLOBAL
 	encoder2_B AT %I* : BOOL;
 	
 // INPUTS SIMULACION
-	alfa_sim : REAL;
+	alfa_sim : REAL:= GVL.Pi;
 	beta_sim : REAL;
 	
 // INPUTS ADS
@@ -28,6 +28,8 @@ VAR_GLOBAL
 	Xc_ADS : INT;
 	Yc_ADS : INT;
 	ready: BOOL;
+	alfa_deg:REAL;
+	beta_deg:REAL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

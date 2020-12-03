@@ -60,12 +60,54 @@ END_IF
 						GVL.Cilindro2.regimen:=-GVL.regimen_maximo*ABS(dbeta/dalfa);
 					END_IF
 			END_IF
+
+			// si beta está más lejos que alfa
+			ELSE
+			IF NOT GVL.en_objetivo_beta THEN
+			IF dbeta > 0 THEN
+				//mover cilindro 2 a velocidad máxima
+				GVL.Cilindro2.regimen:=GVL.regimen_maximo;
+				ELSE
+					//o mínima
+					GVL.Cilindro2.regimen:=-GVL.regimen_maximo;
+				END_IF
+			END_IF
+				//y mover cilindro 1 a menor velocidad dalfa/dbeta
+			IF NOT GVL.en_objetivo_alfa THEN
+				IF dalfa >0 THEN
+					GVL.Cilindro1.regimen:=GVL.regimen_maximo*ABS(dalfa/dbeta);
+					ELSE
+						GVL.Cilindro1.regimen:=-GVL.regimen_maximo*ABS(dalfa/dbeta);
+					END_IF
 			END_IF
 			END_IF
 		
 		END_IF
 	END_IF
 	END_IF
+				END_IF
+	
+//SI NO HE LLEGADO NO ACEPTO NUEVO COMANDO
+IF NOT GVL.en_objetivo THEN
+	IO.ready := FALSE;
+	IO.string_out := CONCAT('Executing: ',gvl.comando_actual);
+	ELSE
+		IO.ready := TRUE;
+		IO.string_out := concat(concat(concat(CONCAT( 'Ready at Xc=', INT_TO_STRING(IO.Xc_ADS)), 'mm, Yc='),  INT_TO_STRING(IO.Yc_ADS)) , 'mm');
+END_IF
+
+//SI EL SETPOINT ES ERRONEO, AVISAR Y ABRIR CANAL
+IF GVL.error THEN
+		IO.ready := TRUE;
+		IO.string_out := 'Objetivo inválido, mandar nuevo comando';
+END_IF
+
+//SI EL COMANDO ES DESCONOCIDO, AVISAR Y ABRIR CANAL
+
+IF GVL.comando_actual='Comando desconocido' THEN
+			IO.ready := TRUE;
+		IO.string_out := 'Comando desconocido, mandar nuevo comando';
+END_IF
 	
 	]]></ST>
     </Implementation>
@@ -102,11 +144,32 @@ END_IF
       <LineId Id="101" Count="4" />
       <LineId Id="127" Count="0" />
       <LineId Id="89" Count="0" />
+      <LineId Id="170" Count="0" />
+      <LineId Id="169" Count="0" />
+      <LineId Id="173" Count="15" />
+      <LineId Id="172" Count="0" />
       <LineId Id="99" Count="0" />
       <LineId Id="86" Count="0" />
       <LineId Id="85" Count="0" />
       <LineId Id="83" Count="0" />
-      <LineId Id="77" Count="1" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="189" Count="0" />
+      <LineId Id="137" Count="0" />
+      <LineId Id="139" Count="6" />
+      <LineId Id="138" Count="0" />
+      <LineId Id="147" Count="0" />
+      <LineId Id="146" Count="0" />
+      <LineId Id="151" Count="0" />
+      <LineId Id="149" Count="1" />
+      <LineId Id="148" Count="0" />
+      <LineId Id="153" Count="0" />
+      <LineId Id="152" Count="0" />
+      <LineId Id="155" Count="0" />
+      <LineId Id="154" Count="0" />
+      <LineId Id="156" Count="0" />
+      <LineId Id="158" Count="0" />
+      <LineId Id="157" Count="0" />
+      <LineId Id="78" Count="0" />
       <LineId Id="55" Count="0" />
     </LineIds>
   </POU>
