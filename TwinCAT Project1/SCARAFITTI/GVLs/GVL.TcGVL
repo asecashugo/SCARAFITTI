@@ -3,9 +3,7 @@
   <GVL Name="GVL" Id="{bebee469-33ab-4dc5-83a7-e8c6445d8067}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-	
-simulacion : BOOL :=0;
-parada : BOOL:=1;
+
 
 // Geometría del robot//
 //todo en mm//
@@ -59,7 +57,6 @@ beta2 : REAL:= 0;
 
 
 d1: REAL;
-error AT %Q*: BOOL;
 d2: REAL;
 
 
@@ -69,15 +66,18 @@ beta_enc : REAL :=0;
 //cilindros
 Cilindro1 : Cilindro;
 Cilindro2 : Cilindro;
-regimen_maximo : INT :=100;
+regimen_maximo : REAL :=100;
 
 //Internas
 en_objetivo_alfa : BOOL; //brazo proximal izquierdo en posición objetivo
 en_objetivo_beta : BOOL; ///brazo proximal derecho en posición objetivo
-en_objetivo: BOOL; ///ambos en objetivo
 comando_actual : STRING := 'Default comando actual';
 ultimo_comando : STRING;
 comando_actual_tipo : STRING;
+
+//Sistema
+Scarafitti : SCARAFITTI;
+
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

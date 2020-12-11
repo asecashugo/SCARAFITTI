@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="ENCODERPULSEtoANGLE" Id="{e4835318-288f-4071-898a-39471c291f8c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK ENCODERPULSEtoANGLE
+VAR_INPUT
+	A :BOOL;
+	B:BOOL;
+	Pulsos:DINT:=1600;
+	b_calibrado: BOOL;
+	angulo_calibrado : REAL;
+END_VAR
+VAR_OUTPUT
+	acum : DINT:=0;
+	angle :REAL;
+	estado : INT;
+END_VAR
+VAR
+	delta_angulo : REAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//determinar delta angulo
+delta_angulo:=2*GVL.pi/pulsos;
+
+//ACUM
+CASE estado OF
+	0: //INIT
+	IF(A AND NOT(B)) THEN
+		estado:=1;
+		ELSE IF A AND B THEN
+			estado:=2;
+			ELSE IF B AND NOT(A) THEN
+				estado:=3;
+				ELSE IF NOT(B)AND NOT(A) THEN
+					estado:=4;
+				END_IF
+			END_IF
+			
+		END_IF
+	END_IF
+	estado:=1;
+	1:
+	IF B THEN
+		estado:=2;
+		acum:=acum+1;
+		angle:=angle + delta_angulo;
+		ELSE IF NOT(A) THEN
+			estado:=4;
+			acum:=acum-1;
+			angle:=angle - delta_angulo;
+		END_IF
+	END_IF
+	2:
+	IF NOT(A) THEN
+		estado:=3;
+		acum:=acum+1;
+		angle:=angle + delta_angulo;
+		ELSE IF NOT(B) THEN
+			estado:=1;
+			acum:=acum-1;
+			angle:=angle - delta_angulo;
+		END_IF
+	END_IF
+	3:
+	IF NOT(B) THEN
+		estado:=4;
+		acum:=acum+1;
+		angle:=angle + delta_angulo;
+		ELSE IF A THEN
+			estado:=2;
+			acum:=acum-1;
+			angle:=angle - delta_angulo;
+		END_IF
+	END_IF
+	4:
+	IF A THEN
+		estado:=1;
+		acum:=acum+1;
+		angle:=angle + delta_angulo;
+		ELSE IF B THEN
+			estado:=3;
+			acum:=acum-1;
+			angle:=angle - delta_angulo;
+		END_IF
+	END_IF
+	
+END_CASE
+
+//calibración
+IF b_calibrado THEN
+	acum:=0;
+	angle:=angulo_calibrado;	
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="ENCODERPULSEtoANGLE">
+      <LineId Id="108" Count="0" />
+      <LineId Id="110" Count="0" />
+      <LineId Id="109" Count="0" />
+      <LineId Id="80" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="30" Count="1" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="37" Count="1" />
+      <LineId Id="40" Count="2" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="24" Count="1" />
+      <LineId Id="43" Count="1" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="106" Count="0" />
+      <LineId Id="48" Count="1" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="111" Count="0" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="54" Count="2" />
+      <LineId Id="112" Count="0" />
+      <LineId Id="57" Count="2" />
+      <LineId Id="113" Count="0" />
+      <LineId Id="60" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="62" Count="3" />
+      <LineId Id="114" Count="0" />
+      <LineId Id="66" Count="2" />
+      <LineId Id="115" Count="0" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="71" Count="3" />
+      <LineId Id="116" Count="0" />
+      <LineId Id="75" Count="2" />
+      <LineId Id="117" Count="0" />
+      <LineId Id="78" Count="0" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="82" Count="0" />
+      <LineId Id="100" Count="0" />
+      <LineId Id="102" Count="0" />
+      <LineId Id="118" Count="1" />
+      <LineId Id="104" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

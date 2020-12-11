@@ -34,6 +34,9 @@
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
+    <Compile Include="GVLs\SCARAFITTI.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
@@ -64,16 +67,13 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\ENCODERPULSEtoANGLE.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\Sensores\EncoderMeas.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Simulacion.TcPOU">
+    <Compile Include="POUs\Sensores\ENCODERPULSEtoANGLE.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Visualization Manager.TcVMO">
+    <Compile Include="POUs\Simulacion.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -133,10 +133,6 @@
     <PlaceholderReference Include="Tc2_ControllerToolbox">
       <DefaultResolution>Tc2_ControllerToolbox, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc2_ControllerToolbox</Namespace>
-    </PlaceholderReference>
-    <PlaceholderReference Include="Tc2_SerialCom">
-      <DefaultResolution>Tc2_SerialCom, * (Beckhoff Automation GmbH)</DefaultResolution>
-      <Namespace>Tc2_SerialCom</Namespace>
     </PlaceholderReference>
     <PlaceholderReference Include="Tc2_Standard">
       <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>

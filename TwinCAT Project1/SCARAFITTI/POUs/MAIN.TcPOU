@@ -83,14 +83,14 @@ fb_solveAlfaBeta.y:=GVL.Yc_sp;
 fb_solveAlfaBeta();
 GVL.d1 :=fb_solveAlfaBeta.d1;
 GVL.d2 :=fb_solveAlfaBeta.d2;
-GVL.error := fb_solveAlfaBeta.error;
+GVL.Scarafitti.error_objetivo := fb_solveAlfaBeta.error;
 GVL.alfa_sp:=MIN(MAX(gvl.pi/2,fb_solveAlfaBeta.alfa),GVL.Pi);
 GVL.beta_sp:=MIN(MAX(0,fb_solveAlfaBeta.beta),GVL.Pi/2);
 
 //HE LLEGADO?
 GVL.en_objetivo_alfa:=(ABS(GVL.alfa-GVL.alfa_sp)<=GVL.deadband_angulo);
 GVL.en_objetivo_beta:=(ABS(GVL.beta-GVL.beta_sp)<=GVL.deadband_angulo);
-GVL.en_objetivo := GVL.en_objetivo_alfa AND GVL.en_objetivo_beta;
+GVL.Scarafitti.en_objetivo := GVL.en_objetivo_alfa AND GVL.en_objetivo_beta;
 
 
 //SI NO HE LLEGADO, ME MUEVO

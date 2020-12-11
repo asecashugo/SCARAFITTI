@@ -3,7 +3,7 @@
   <POU Name="Simulacion" Id="{1cb571e3-1b66-4606-979d-4d7d366bccdb}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM Simulacion
 VAR
-	vel : REAL := 0.0001;
+	vel : REAL := 0.001;
 
 END_VAR
 ]]></Declaration>

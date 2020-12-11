@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <DUT Name="SCARAFITTI" Id="{0d690a72-be0d-46c8-89d9-27373503178a}">
+    <Declaration><![CDATA[TYPE SCARAFITTI :
+STRUCT
+	parada : BOOL;
+	simulacion_alfa : BOOL;
+	simulacion_beta : BOOL;
+	quieto : BOOL;
+	en_objetivo : BOOL;
+	error_objetivo : BOOL;
+	ADSCOM_ready : BOOL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

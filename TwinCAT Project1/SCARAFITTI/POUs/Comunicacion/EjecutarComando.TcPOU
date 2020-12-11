@@ -12,7 +12,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF NOT(GVL.parada) THEN 
+      <ST><![CDATA[IF NOT(GVL.Scarafitti.parada) THEN 
 	IF GVL.comando_actual_tipo='G00' THEN
 		///inicializar regimenes a cero
 		GVL.Cilindro1.regimen:=0;
@@ -37,7 +37,7 @@ END_IF
 		///inicializar regimenes a cero
 		GVL.Cilindro1.regimen:=0;
 		GVL.Cilindro2.regimen:=0;
-		IF NOT GVL.en_objetivo THEN
+		IF NOT GVL.Scarafitti.en_objetivo THEN
 		///determinar la diferencia con el objetivo en alfa y beta
 		dalfa:=GVL.alfa_sp-GVL.alfa;
 		dbeta:=GVL.beta_sp-GVL.beta;
@@ -88,24 +88,24 @@ END_IF
 				END_IF
 	
 //SI NO HE LLEGADO NO ACEPTO NUEVO COMANDO
-IF NOT GVL.en_objetivo THEN
-	IO.ready := FALSE;
+IF NOT GVL.Scarafitti.en_objetivo THEN
+	GVL.Scarafitti.ADSCOM_ready := FALSE;
 	IO.string_out := CONCAT('Executing: ',gvl.comando_actual);
 	ELSE
-		IO.ready := TRUE;
+		GVL.Scarafitti.ADSCOM_ready := TRUE;
 		IO.string_out := concat(concat(concat(CONCAT( 'Ready at Xc=', INT_TO_STRING(IO.Xc_ADS)), 'mm, Yc='),  INT_TO_STRING(IO.Yc_ADS)) , 'mm');
 END_IF
 
 //SI EL SETPOINT ES ERRONEO, AVISAR Y ABRIR CANAL
-IF GVL.error THEN
-		IO.ready := TRUE;
+IF GVL.Scarafitti.error_objetivo THEN
+		GVL.Scarafitti.ADSCOM_ready := TRUE;
 		IO.string_out := 'Objetivo inválido, mandar nuevo comando';
 END_IF
 
 //SI EL COMANDO ES DESCONOCIDO, AVISAR Y ABRIR CANAL
 
 IF GVL.comando_actual='Comando desconocido' THEN
-			IO.ready := TRUE;
+			GVL.Scarafitti.ADSCOM_ready := TRUE;
 		IO.string_out := 'Comando desconocido, mandar nuevo comando';
 END_IF
 	

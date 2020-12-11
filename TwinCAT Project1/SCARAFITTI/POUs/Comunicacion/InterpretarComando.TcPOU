@@ -13,7 +13,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF ((IO.ready AND IO.string_in<>GVL.ultimo_comando)OR IO.string_in='reset') THEN
+      <ST><![CDATA[IF ((GVL.Scarafitti.ADSCOM_ready AND IO.string_in<>GVL.ultimo_comando)OR IO.string_in='reset') THEN
 ///excepcion para reset
 IF IO.string_in='reset' THEN
 	IO.string_in:='G00 X000 Y000';
@@ -29,7 +29,7 @@ END_IF
 			GVL.Xc_sp:= aux_real;
 			GVL.comando_actual:=IO.string_in;
 			GVL.comando_actual_tipo:='G00';
-			IO.ready:=FALSE;
+			GVL.Scarafitti.ADSCOM_ready:=FALSE;
 			END_IF
 			//buscar comandos de Y
 			IF FIND (IO.string_in,'Y') > 0 THEN
@@ -39,7 +39,7 @@ END_IF
 			GVL.Yc_sp:= aux_real;
 			GVL.comando_actual:=IO.string_in;
 			GVL.comando_actual_tipo:='G00';
-			IO.ready:=FALSE;
+			GVL.Scarafitti.ADSCOM_ready:=FALSE;
 			END_IF
 			
 		ELSE IF LEFT(IO.string_in, 3) ='G01' THEN
@@ -52,7 +52,7 @@ END_IF
 			GVL.Xc_sp:= aux_real;
 			GVL.comando_actual:=IO.string_in;
 			GVL.comando_actual_tipo:='G01';
-			IO.ready:=FALSE;
+			GVL.Scarafitti.ADSCOM_ready:=FALSE;
 			END_IF
 			//buscar comandos de Y
 			IF FIND (IO.string_in,'Y') > 0 THEN
@@ -62,7 +62,7 @@ END_IF
 			GVL.Yc_sp:= aux_real;
 			GVL.comando_actual:=IO.string_in;
 			GVL.comando_actual_tipo:='G01';
-			IO.ready:=FALSE;
+			GVL.Scarafitti.ADSCOM_ready:=FALSE;
 			END_IF
 			END_IF
 			END_IF
@@ -78,7 +78,7 @@ END_IF
 IF ((FIND(IO.string_in,'F')=0) AND (FIND(IO.string_in,'G')=0)) THEN
 	 IO.string_out:='Comando desconocido';
 		GVL.comando_actual:='Comando desconocido';
-		IO.ready:=TRUE;
+		GVL.Scarafitti.ADSCOM_ready:=TRUE;
 	END_IF
 
 

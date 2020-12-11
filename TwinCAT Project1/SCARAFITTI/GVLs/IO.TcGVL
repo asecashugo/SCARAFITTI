@@ -8,6 +8,8 @@ VAR_GLOBAL
 	encoder1_B AT %I* : BOOL;
 	encoder2_A AT %I* : BOOL;
 	encoder2_B AT %I* : BOOL;
+	tope_alfa AT %I* : BOOL;
+	tope_beta AT %I* : BOOL;
 	
 // INPUTS SIMULACION
 	alfa_sim : REAL:= GVL.Pi;
@@ -27,7 +29,6 @@ VAR_GLOBAL
 //OUTPUTS ADS
 	Xc_ADS : INT;
 	Yc_ADS : INT;
-	ready: BOOL;
 	alfa_deg:REAL;
 	beta_deg:REAL;
 END_VAR]]></Declaration>
