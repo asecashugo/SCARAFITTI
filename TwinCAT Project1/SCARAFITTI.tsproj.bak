@@ -64,11 +64,11 @@
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>IO.valv_beta_mas</Name>
+							<Name>IO.valv_alfa_menos</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>IO.valv_alfa_menos</Name>
+							<Name>IO.valv_beta_mas</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -78,10 +78,6 @@
 					</Vars>
 					<Vars VarGrpType="2">
 						<Name>PlcTask Outputs</Name>
-						<Var>
-							<Name>GVL.error</Name>
-							<Type>BOOL</Type>
-						</Var>
 						<Var>
 							<Name>IO.blink</Name>
 							<Comment><![CDATA[OUTPUTS	]]></Comment>

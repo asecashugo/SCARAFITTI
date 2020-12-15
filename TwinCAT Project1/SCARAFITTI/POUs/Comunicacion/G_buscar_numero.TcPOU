@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="G_buscar_numero" Id="{86ea2a0f-187b-4f0f-bb18-001a1c7f87d7}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK G_buscar_numero
+VAR_INPUT
+	letra : STRING;
+	cadena : STRING;
+	
+END_VAR
+VAR_OUTPUT
+	numero : REAL;
+	error:BOOL;
+END_VAR
+VAR
+	aux:INT;
+	inicio:INT;
+	espacio_siguiente:INT;
+	cadena_recortada:STRING;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[error:=FALSE;
+numero:=0.99;
+IF find(cadena,letra)=0 THEN
+	error:=TRUE;
+	ELSE
+		aux:=find(cadena,letra);
+		inicio:=aux + 1;
+		cadena_recortada:=delete(cadena,aux,1);
+		espacio_siguiente:=find(cadena_recortada,' ');
+		IF espacio_siguiente=0 THEN
+			espacio_siguiente := len(cadena_recortada)+1;
+		END_IF
+		numero:=STRING_TO_REAL(left(cadena_recortada,espacio_siguiente -1));
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="G_buscar_numero">
+      <LineId Id="9" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="31" Count="1" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="33" Count="3" />
+      <LineId Id="23" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -10,6 +10,11 @@ VAR
 	aux_str:STRING;
 	aux_int:INT;
 	aux_real:REAL;
+	buscarX:G_buscar_numero;
+	buscarY:G_buscar_numero;
+	buscarF:G_buscar_numero;
+	buscarS:G_buscar_numero;
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -18,48 +23,48 @@ END_VAR
 IF IO.string_in='reset' THEN
 	IO.string_in:='G00 X000 Y000';
 END_IF
-	IF  LEFT(IO.string_in, 1)='G' THEN
-		IF LEFT(IO.string_in, 3) ='G00' THEN
+	IF  FIND (IO.string_in,'G') > 0 THEN
+		IF FIND(IO.string_in, 'G00') > 0 THEN
 			IO.string_out:='comando G00 recibido';
 			//buscar comandos de X
 			IF FIND (IO.string_in,'X') > 0 THEN
-			aux_int:=FIND (IO.string_in,'X');
-			aux_str:=MID(IO.string_in,3,aux_int+1);
-			aux_real:=STRING_TO_REAL(aux_str);
-			GVL.Xc_sp:= aux_real;
+			buscarX.cadena:=IO.string_in;
+			buscarX.letra:='X';
+			buscarX();
+			GVL.Xc_sp:= buscarX.numero;
 			GVL.comando_actual:=IO.string_in;
 			GVL.comando_actual_tipo:='G00';
 			GVL.Scarafitti.ADSCOM_ready:=FALSE;
 			END_IF
 			//buscar comandos de Y
 			IF FIND (IO.string_in,'Y') > 0 THEN
-			aux_int:=FIND (IO.string_in,'Y');
-			aux_str:=MID(IO.string_in,3,aux_int+1);
-			aux_real:=STRING_TO_REAL(aux_str);
-			GVL.Yc_sp:= aux_real;
+			buscarY.cadena:=IO.string_in;
+			buscarY.letra:='Y';
+			buscarY();
+			GVL.Yc_sp:= buscarY.numero;
 			GVL.comando_actual:=IO.string_in;
 			GVL.comando_actual_tipo:='G00';
 			GVL.Scarafitti.ADSCOM_ready:=FALSE;
 			END_IF
 			
-		ELSE IF LEFT(IO.string_in, 3) ='G01' THEN
+		ELSE IF FIND(IO.string_in, 'G01') > 0 THEN
 			IO.string_out:='comando G01 recibido';
 			//buscar comandos de X
 			IF FIND (IO.string_in,'X') > 0 THEN
-			aux_int:=FIND (IO.string_in,'X');
-			aux_str:=MID(IO.string_in,3,aux_int+1);
-			aux_real:=STRING_TO_REAL(aux_str);
-			GVL.Xc_sp:= aux_real;
+			buscarX.cadena:=IO.string_in;
+			buscarX.letra:='X';
+			buscarX();
+			GVL.Xc_sp:= buscarX.numero;
 			GVL.comando_actual:=IO.string_in;
 			GVL.comando_actual_tipo:='G01';
 			GVL.Scarafitti.ADSCOM_ready:=FALSE;
 			END_IF
 			//buscar comandos de Y
 			IF FIND (IO.string_in,'Y') > 0 THEN
-			aux_int:=FIND (IO.string_in,'Y');
-			aux_str:=MID(IO.string_in,3,aux_int+1);
-			aux_real:=STRING_TO_REAL(aux_str);
-			GVL.Yc_sp:= aux_real;
+			buscarY.cadena:=IO.string_in;
+			buscarY.letra:='Y';
+			buscarY();
+			GVL.Yc_sp:= buscarY.numero;
 			GVL.comando_actual:=IO.string_in;
 			GVL.comando_actual_tipo:='G01';
 			GVL.Scarafitti.ADSCOM_ready:=FALSE;
@@ -69,9 +74,10 @@ END_IF
 END_IF
 	///buscar comandos F de velocidad
 	IF (FIND(IO.string_in,'F')>0) THEN
-		aux_int:=FIND(IO.string_in,'F');
-		aux_str:=MID(IO.string_in,2,aux_int+1);
-		GVL.regimen_maximo:=STRING_TO_INT(aux_str);
+			buscarF.cadena:=IO.string_in;
+			buscarF.letra:='F';
+			buscarF();
+			GVL.regimen_maximo:= buscarF.numero;
 		END_IF
 
 //comando desconocido
@@ -94,32 +100,34 @@ GVL.ultimo_comando:=IO.string_in;]]></ST>
       <LineId Id="11" Count="3" />
       <LineId Id="46" Count="0" />
       <LineId Id="41" Count="0" />
-      <LineId Id="55" Count="0" />
-      <LineId Id="33" Count="0" />
       <LineId Id="43" Count="0" />
+      <LineId Id="164" Count="1" />
       <LineId Id="42" Count="0" />
       <LineId Id="15" Count="0" />
       <LineId Id="69" Count="0" />
       <LineId Id="44" Count="0" />
       <LineId Id="35" Count="0" />
       <LineId Id="48" Count="1" />
-      <LineId Id="57" Count="0" />
-      <LineId Id="50" Count="3" />
+      <LineId Id="169" Count="1" />
+      <LineId Id="51" Count="2" />
       <LineId Id="70" Count="0" />
       <LineId Id="54" Count="0" />
       <LineId Id="47" Count="0" />
       <LineId Id="16" Count="0" />
       <LineId Id="18" Count="1" />
-      <LineId Id="92" Count="18" />
+      <LineId Id="92" Count="1" />
+      <LineId Id="171" Count="3" />
+      <LineId Id="98" Count="5" />
+      <LineId Id="175" Count="2" />
+      <LineId Id="107" Count="3" />
       <LineId Id="89" Count="0" />
       <LineId Id="134" Count="0" />
       <LineId Id="151" Count="0" />
       <LineId Id="150" Count="0" />
       <LineId Id="149" Count="0" />
       <LineId Id="91" Count="0" />
-      <LineId Id="133" Count="0" />
+      <LineId Id="178" Count="2" />
       <LineId Id="132" Count="0" />
-      <LineId Id="131" Count="0" />
       <LineId Id="129" Count="0" />
       <LineId Id="135" Count="0" />
       <LineId Id="130" Count="0" />

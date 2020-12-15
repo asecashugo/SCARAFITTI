@@ -49,6 +49,9 @@
     <Compile Include="POUs\Comunicacion\EjecutarComando.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Comunicacion\G_buscar_numero.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Comunicacion\InterpretarComando.TcPOU">
       <SubType>Code</SubType>
     </Compile>
