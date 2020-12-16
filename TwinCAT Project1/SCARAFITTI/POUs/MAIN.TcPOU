@@ -72,7 +72,14 @@ GVL.Yde:=(GVL.Yd+GVL.Ye)/2;
 //GVL.Xc_sp:=fb_barridoXY.Xbarrido;
 //GVL.Yc_sp:=fb_barridoXY.Ybarrido;
 ////ADS Com
+IF ((NOT(GVL.Scarafitti.parada) AND GVL.Scarafitti.ADSCOM_ready AND IO.string_in<>GVL.ultimo_comando)OR IO.string_in='reset') THEN
 	InterpretarComando();
+	ELSE
+		////Ignorar comandos que llegan mientras ADS com no está listo
+		IO.string_in:=GVL.ultimo_comando;
+END_IF
+
+	
 
 ////Fija
 //GVL.Xc_sp:= Xc_test;
@@ -113,7 +120,14 @@ EjecutarComando();
       <LineId Id="281" Count="8" />
       <LineId Id="341" Count="0" />
       <LineId Id="290" Count="7" />
+      <LineId Id="617" Count="0" />
       <LineId Id="534" Count="0" />
+      <LineId Id="630" Count="0" />
+      <LineId Id="627" Count="0" />
+      <LineId Id="631" Count="0" />
+      <LineId Id="618" Count="0" />
+      <LineId Id="624" Count="0" />
+      <LineId Id="619" Count="0" />
       <LineId Id="502" Count="0" />
       <LineId Id="298" Count="0" />
       <LineId Id="342" Count="0" />

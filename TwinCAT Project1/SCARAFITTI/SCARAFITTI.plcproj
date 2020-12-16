@@ -55,6 +55,9 @@
     <Compile Include="POUs\Comunicacion\InterpretarComando.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Comunicacion\LetraPresente.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\FB_BARRIDOXY.TcPOU">
       <SubType>Code</SubType>
     </Compile>

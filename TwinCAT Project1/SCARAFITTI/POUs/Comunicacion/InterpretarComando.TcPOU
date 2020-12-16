@@ -5,6 +5,7 @@
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
+	comando_valido:BOOL;
 END_VAR
 VAR
 	aux_str:STRING;
@@ -18,16 +19,18 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF ((GVL.Scarafitti.ADSCOM_ready AND IO.string_in<>GVL.ultimo_comando)OR IO.string_in='reset') THEN
+      <ST><![CDATA[comando_valido:=FALSE;
+///Comando en mayúsculas
+IO.string_in:=f_toucase(IO.string_in);
 ///excepcion para reset
-IF IO.string_in='reset' THEN
+IF IO.string_in='RESET' THEN
 	IO.string_in:='G00 X000 Y000';
 END_IF
-	IF  FIND (IO.string_in,'G') > 0 THEN
-		IF FIND(IO.string_in, 'G00') > 0 THEN
+	IF  letraPresente('G',IO.string_in) THEN
+		IF letraPresente('G00',IO.string_in) THEN
 			IO.string_out:='comando G00 recibido';
 			//buscar comandos de X
-			IF FIND (IO.string_in,'X') > 0 THEN
+			IF letraPresente('X',IO.string_in) THEN
 			buscarX.cadena:=IO.string_in;
 			buscarX.letra:='X';
 			buscarX();
@@ -35,9 +38,10 @@ END_IF
 			GVL.comando_actual:=IO.string_in;
 			GVL.comando_actual_tipo:='G00';
 			GVL.Scarafitti.ADSCOM_ready:=FALSE;
+			comando_valido:=TRUE;
 			END_IF
 			//buscar comandos de Y
-			IF FIND (IO.string_in,'Y') > 0 THEN
+			IF letraPresente('Y',IO.string_in) THEN
 			buscarY.cadena:=IO.string_in;
 			buscarY.letra:='Y';
 			buscarY();
@@ -45,12 +49,13 @@ END_IF
 			GVL.comando_actual:=IO.string_in;
 			GVL.comando_actual_tipo:='G00';
 			GVL.Scarafitti.ADSCOM_ready:=FALSE;
+			comando_valido:=TRUE;
 			END_IF
 			
-		ELSE IF FIND(IO.string_in, 'G01') > 0 THEN
+		ELSE IF letraPresente('G01',IO.string_in) THEN
 			IO.string_out:='comando G01 recibido';
 			//buscar comandos de X
-			IF FIND (IO.string_in,'X') > 0 THEN
+			IF letraPresente('X',IO.string_in) THEN
 			buscarX.cadena:=IO.string_in;
 			buscarX.letra:='X';
 			buscarX();
@@ -58,9 +63,10 @@ END_IF
 			GVL.comando_actual:=IO.string_in;
 			GVL.comando_actual_tipo:='G01';
 			GVL.Scarafitti.ADSCOM_ready:=FALSE;
+			comando_valido:=TRUE;
 			END_IF
 			//buscar comandos de Y
-			IF FIND (IO.string_in,'Y') > 0 THEN
+			IF letraPresente('Y',IO.string_in) THEN
 			buscarY.cadena:=IO.string_in;
 			buscarY.letra:='Y';
 			buscarY();
@@ -68,33 +74,36 @@ END_IF
 			GVL.comando_actual:=IO.string_in;
 			GVL.comando_actual_tipo:='G01';
 			GVL.Scarafitti.ADSCOM_ready:=FALSE;
+			comando_valido:=TRUE;
 			END_IF
 			END_IF
 			END_IF
 END_IF
 	///buscar comandos F de velocidad
-	IF (FIND(IO.string_in,'F')>0) THEN
+	IF letraPresente('F',IO.string_in) THEN
 			buscarF.cadena:=IO.string_in;
 			buscarF.letra:='F';
 			buscarF();
 			GVL.regimen_maximo:= buscarF.numero;
+			comando_valido:=TRUE;
 		END_IF
 
 //comando desconocido
-IF ((FIND(IO.string_in,'F')=0) AND (FIND(IO.string_in,'G')=0)) THEN
+IF NOT(letraPresente('G',IO.string_in) OR letraPresente('F',IO.string_in)) THEN
 	 IO.string_out:='Comando desconocido';
 		GVL.comando_actual:='Comando desconocido';
 		GVL.Scarafitti.ADSCOM_ready:=TRUE;
 	END_IF
 
-
+//actualizar último comando sólo si es válido
+IF comando_valido THEN
+	GVL.ultimo_comando:=IO.string_in;
 END_IF
-
-//actualizar último comando
-GVL.ultimo_comando:=IO.string_in;]]></ST>
+]]></ST>
     </Implementation>
     <LineIds Name="InterpretarComando">
-      <LineId Id="10" Count="0" />
+      <LineId Id="201" Count="0" />
+      <LineId Id="207" Count="1" />
       <LineId Id="128" Count="0" />
       <LineId Id="125" Count="1" />
       <LineId Id="11" Count="3" />
@@ -106,20 +115,25 @@ GVL.ultimo_comando:=IO.string_in;]]></ST>
       <LineId Id="15" Count="0" />
       <LineId Id="69" Count="0" />
       <LineId Id="44" Count="0" />
+      <LineId Id="202" Count="0" />
       <LineId Id="35" Count="0" />
       <LineId Id="48" Count="1" />
       <LineId Id="169" Count="1" />
       <LineId Id="51" Count="2" />
       <LineId Id="70" Count="0" />
       <LineId Id="54" Count="0" />
+      <LineId Id="203" Count="0" />
       <LineId Id="47" Count="0" />
       <LineId Id="16" Count="0" />
       <LineId Id="18" Count="1" />
       <LineId Id="92" Count="1" />
       <LineId Id="171" Count="3" />
-      <LineId Id="98" Count="5" />
+      <LineId Id="98" Count="2" />
+      <LineId Id="204" Count="0" />
+      <LineId Id="101" Count="2" />
       <LineId Id="175" Count="2" />
       <LineId Id="107" Count="3" />
+      <LineId Id="205" Count="0" />
       <LineId Id="89" Count="0" />
       <LineId Id="134" Count="0" />
       <LineId Id="151" Count="0" />
@@ -128,6 +142,7 @@ GVL.ultimo_comando:=IO.string_in;]]></ST>
       <LineId Id="91" Count="0" />
       <LineId Id="178" Count="2" />
       <LineId Id="132" Count="0" />
+      <LineId Id="206" Count="0" />
       <LineId Id="129" Count="0" />
       <LineId Id="135" Count="0" />
       <LineId Id="130" Count="0" />
@@ -137,9 +152,9 @@ GVL.ultimo_comando:=IO.string_in;]]></ST>
       <LineId Id="58" Count="0" />
       <LineId Id="25" Count="0" />
       <LineId Id="88" Count="0" />
+      <LineId Id="197" Count="2" />
       <LineId Id="22" Count="0" />
-      <LineId Id="137" Count="0" />
-      <LineId Id="75" Count="2" />
+      <LineId Id="77" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
